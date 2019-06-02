@@ -16,11 +16,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="EZChatClient" />
         <module name="EZChatServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="EZChartClient" target="1.5" />
+      <module name="EZChatClient" target="1.5" />
       <module name="EZChatServer" target="1.5" />
     </bytecodeTargetLevel>
   </component>
