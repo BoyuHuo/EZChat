@@ -1,4 +1,6 @@
-package service;
+package service.imp;
+
+import service.testTcpClient;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
