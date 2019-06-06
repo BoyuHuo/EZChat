@@ -19,6 +19,8 @@ public class ServerThread extends Thread{
 
     private String name;
 
+    int firstFlag = 0;
+
     public ServerThread(Socket s) throws IOException {
         client = s;
         out = new PrintWriter(client.getOutputStream(), true);
@@ -34,9 +36,15 @@ public class ServerThread extends Thread{
         out.println("成功连上聊天室,请输入你的名字：");
         System.out.println(getName());
         try {
-            int flag = 0;
+
             String line = in.readLine();
             while (!"byeClient".equals(line)) {
+
+                MessageParser.parseMessage(line);
+
+
+
+
 
                 // 查看在线用户列表
                 if ("showuser".equals(line)) {
@@ -49,7 +57,7 @@ public class ServerThread extends Thread{
                 }
 
                 // 第一次进入，保存名字
-                if (flag == 0) {
+                if (firstFlag == 0) {
                     name = line;
                     testTcpServer.user_list.add(name);
                     testTcpServer.thread_list.add(this);
@@ -59,7 +67,7 @@ public class ServerThread extends Thread{
                 } else {
                     pushMessage(name, line);
                 }
-                flag++;
+                firstFlag++;
                 line = in.readLine();
                 System.out.println(name + ":" + line);
             }
