@@ -28,12 +28,8 @@ public class testTcpClient extends Socket {
         out = new PrintWriter(this.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(this.getInputStream()));
         new ResponseThread();
-        out.println("我已经连接服务器");
-        while (true) {
-            in = new BufferedReader(new InputStreamReader(System.in));
-            String input = in.readLine();
-            out.println(input);
-        }
+        new RequestThread();
+
     }
 
 

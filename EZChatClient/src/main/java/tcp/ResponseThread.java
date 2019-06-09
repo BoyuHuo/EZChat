@@ -9,10 +9,12 @@ public class ResponseThread extends Thread {
      */
 
     private BufferedReader buff;
+    private MessageParser messageParser;
 
     public ResponseThread() {
         try {
             buff = new BufferedReader(new InputStreamReader(testTcpClient.client.getInputStream()));
+            messageParser = new MessageParser();
             start();
         } catch (Exception e) {
         }
@@ -26,6 +28,7 @@ public class ResponseThread extends Thread {
                 if ("byeClient".equals(result)) {//客户端申请退出，服务端返回确认退出
                     break;
                 } else {//输出服务端发送消息
+                    messageParser.parseMessage(result);
                     System.out.println(result);
                 }
             }
