@@ -1,4 +1,6 @@
 package service.imp;
 
-public class UserServerceImp {
+import service.UserService;
+
+public class UserServerceImp implements UserService {
 }

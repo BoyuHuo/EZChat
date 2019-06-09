@@ -24,7 +24,7 @@ public class ServerThread extends Thread{
 
     private MessageParser messageParser;
 
-    int firstFlag = 0;
+
 
     public ServerThread(Socket s) throws IOException {
         client = s;

@@ -11,6 +11,7 @@ public class MessageParser {
     private PrintWriter out;  //To client
     private BufferedReader in;  //From client
     private String name;
+    int firstFlag = 0;
 
     public MessageParser(PrintWriter out, BufferedReader in) {
         this.out = out;
