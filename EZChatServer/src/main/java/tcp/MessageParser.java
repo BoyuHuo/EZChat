@@ -1,11 +1,11 @@
 package tcp;
 
-import entity.Message;
 import entity.User;
+import service.ServerService;
 import service.UserService;
-
+import service.imp.ServerServiceImp;
+import service.imp.UserServiceImp;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
 public class MessageParser {
@@ -16,10 +16,9 @@ public class MessageParser {
     private String name;
     int firstFlag = 0;
 
-    private UserService userService;
 
-
-
+    private ServerService serverService = new ServerServiceImp();
+    private UserService userService = new UserServiceImp();
 
 
     public MessageParser(PrintWriter out, BufferedReader in, ServerThread serverThread) {
@@ -42,7 +41,8 @@ public class MessageParser {
         if (tempMsg.length >= 3) {
             switch (Instruction.getInstruction(tempMsg[1])) {
                 case message:
-                    pushMessage(name, tempMsg[2]);
+                    serverService.pushMessage(name, tempMsg[2]);
+                    System.out.println(name + ":" + tempMsg[2]);
                     break;
                 case signin:
                     String[] userCredential = tempMsg[2].split("@");
@@ -53,15 +53,15 @@ public class MessageParser {
 
                     out.println("Hi, "+name + ", Welcome back!");
                     System.out.println(name + "has signed in!");
-                    pushMessage(name, "join the chatting room");
+                    serverService.pushMessage(name, "join the chatting room");
                     break;
                 case signout:
                     break;
                 case userlist:
-                    out.println(this.listOnlineUsers());
+                    out.println(serverService.listOnlineUsers());
                     break;
                 case messagelist:
-                    out.println(this.listmassage());
+                    out.println(serverService.listmassage());
                     break;
                 default:
                     break;
@@ -72,33 +72,7 @@ public class MessageParser {
     }
 
 
-    private String listOnlineUsers() {
-        String s = "--- Online User list ---\015\012";
-        for (int i = 0; i < TcpServer.user_list.size(); i++) {
-            s += "[" + TcpServer.user_list.get(i) + "]\015\012";
-        }
-        s += "--------------------";
-        return s;
-    }
 
-
-    private String listmassage() {
-        String s = "--- Message list ---\015\012";
-        for (int i = 0; i < TcpServer.message_list.size(); i++) {
-            s += "[" + TcpServer.message_list.get(i) + "]\015\012";
-        }
-        s += "--------------------";
-        return s;
-    }
-
-    // 放入消息队列末尾，准备发送给客户端
-    public void pushMessage(String name, String msg) {
-        Message message = new Message(name, msg);
-        // 放入用户信息
-        TcpServer.message_list.addLast(message);
-        // 表示可以向其他用户发送消息
-        TcpServer.isPrint = true;
-    }
 
 
 

@@ -44,14 +44,9 @@ public class ServerThread extends Thread{
         System.out.println("New Client connected! IP:"+ client.getInetAddress()+" at " + new Date().toString());
         try {
             String line = in.readLine();
-            while (!"byeClient".equals(line)) {
-
+            while (!line.contains("@bye@")) {
                 messageParser.parseMessage(line);
-
                 line = in.readLine();
-                
-                line = in.readLine();
-                System.out.println(name + ":" + line);
             }
             out.println("byeClient");
         } catch (Exception e) {
@@ -64,7 +59,7 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
-            pushMessage(name, "退出了聊天室");
+            pushMessage(name, " leave the chatting room!");
         }
     }
 
