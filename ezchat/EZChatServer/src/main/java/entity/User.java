@@ -13,7 +13,7 @@ public class User {
 	}
 	
 	
-	public User(int ID,String name,String password,String email,String sex) {
+	public User(int ID,String name,String password,String email,String gender) {
 		this.id= ID;
 		this.username= name;
 		this.password= password;
