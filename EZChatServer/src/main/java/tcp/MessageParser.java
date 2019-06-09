@@ -48,12 +48,18 @@ public class MessageParser {
                 case signin:
                     String[] userCredential = tempMsg[2].split("%");
                     User user = userService.signIn(userCredential[0],userCredential[1]);
-                    name = user.getUsername();
-                    TcpServer.user_list.add(name);
-                    TcpServer.thread_list.add(serverThread);
-                    out.println("Hi, "+name + ", Welcome back!");
-                    System.out.println(name + " has signed in!");
-                    serverService.pushMessage(name, " join the chatting room");
+                    if(user!=null){
+                        name = user.getUsername();
+                        TcpServer.user_list.add(name);
+                        TcpServer.thread_list.add(serverThread);
+                        out.println("@signin@yes");
+                        out.println("Hi, "+name + ", Welcome back!");
+                        System.out.println(name + " has signed in!");
+                        serverService.pushMessage(name, " join the chatting room");
+                    }else{
+                        out.println("@signin@no");
+                    }
+
                     break;
                 case signout:
                     break;
