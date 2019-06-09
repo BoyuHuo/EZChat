@@ -1,4 +1,4 @@
-package service;
+package tcp;
 
 
 import java.io.IOException;
@@ -10,11 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import entity.Message;
-import service.imp.PrintOutThread;
-import service.imp.ServerThread;
 
 
-public class testTcpServer extends ServerSocket {
+public class TcpServer extends ServerSocket {
 
     private static final int SERVER_PORT = 5566;
     public static boolean isPrint = false;
@@ -25,7 +23,7 @@ public class testTcpServer extends ServerSocket {
     /**
      * 创建服务端Socket,创建向客户端发送消息线程,监听客户端请求并处理
      */
-    public testTcpServer() throws IOException {
+    public TcpServer() throws IOException {
         super(SERVER_PORT);// 创建ServerSocket
         new PrintOutThread();// 处理所有客户端发送的消息
         System.out.println("服务器已启动");
