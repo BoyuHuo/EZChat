@@ -5,38 +5,11 @@ public class User {
     private String password;
     private String gender;
     private String email;
-    private int id;
-    
-    
-    public User() {
-		
-	}
-	
-	
-	public User(int ID,String name,String password,String email,String gender) {
-		this.id= ID;
-		this.username= name;
-		this.password= password;
-		this.email= email;
-		this.gender= gender;
-	}
-    
-    /**
-	 * This method returns the value of the database column USER.user_id
-	 * @return  the value of USER.user_id
-	 */
-	public int getId(){
-		return id;   
-	}     
-	
-	
-	/**
-	 * This method sets the value of the database column USER.user_id
-	 */
-	public void setId(int id){
-		this.id = id;
-	}     
 
+    public User(){}
+    public User(String name){
+        this.username = name;
+    }
     public String getUsername() {
         return username;
     }
