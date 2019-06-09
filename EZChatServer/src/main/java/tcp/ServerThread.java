@@ -46,22 +46,14 @@ public class ServerThread extends Thread{
             String line = in.readLine();
             while (!"byeClient".equals(line)) {
 
-                MessageParser.parseMessage(line);
+                messageParser.parseMessage(line);
 
-
-                // 查看在线用户列表
-                if ("showuser".equals(line)) {
-                    out.println(this.listOnlineUsers());
-                    line = in.readLine();
-                }
-                if ("showmessage".equals(line)) {
-                    out.println(this.listmassage());
-                    line = in.readLine();
-                }
+                line = in.readLine();
 
                 // 第一次进入，保存名字
                 if (firstFlag == 0) {
                     name = line;
+                    messageParser.setName(name);
                     TcpServer.user_list.add(name);
                     TcpServer.thread_list.add(this);
                     out.println(name + "你好,可以开始聊天了...");
@@ -89,36 +81,11 @@ public class ServerThread extends Thread{
         }
     }
 
-    // 放入消息队列末尾，准备发送给客户端
-    public void pushMessage(String name, String msg) {
-        Message message = new Message(name, msg);
-        // 放入用户信息
-        TcpServer.message_list.addLast(message);
-        // 表示可以向其他用户发送消息
-        TcpServer.isPrint = true;
-    }
 
     // 向客户端发送一条消息
     public void sendMessage(Message message) {
         out.println(message.getName() + ":" + message.getMessage());
     }
 
-    private String listOnlineUsers() {
-        String s = "--- Online User list ---\015\012";
-        for (int i = 0; i < TcpServer.user_list.size(); i++) {
-            s += "[" + TcpServer.user_list.get(i) + "]\015\012";
-        }
-        s += "--------------------";
-        return s;
-    }
 
-
-    private String listmassage() {
-        String s = "--- Message list ---\015\012";
-        for (int i = 0; i < TcpServer.message_list.size(); i++) {
-            s += "[" + TcpServer.message_list.get(i) + "]\015\012";
-        }
-        s += "--------------------";
-        return s;
-    }
 }
