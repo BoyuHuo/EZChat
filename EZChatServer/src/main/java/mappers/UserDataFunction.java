@@ -1,13 +1,12 @@
 package mappers;
 
-import java.io.Reader;
-import java.util.List;
-
+import entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import entity.User;
+
+import java.io.Reader;
 
 
 public class UserDataFunction{

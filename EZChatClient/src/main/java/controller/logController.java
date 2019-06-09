@@ -1,48 +1,54 @@
 package controller;
-import javafx.event.*;
-import javafx.scene.control.Button;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import service.UserService;
 import service.imp.UserServiceImp;
 
+import java.io.IOException;
+
 
 public class logController   {
-    @FXML private TextField number;
+    @FXML private TextField email;
     @FXML private TextField password;
-    @FXML private Button log_in;
 
     UserService userService = new UserServiceImp();
-
-
-    public TextField getNumber() {
-        return number;
-    }
-
-    public void setNumber(TextField number) {
-        this.number = number;
-    }
-
-    public TextField getPassword() {
-        return password;
-    }
-
-    public void setPassword(TextField password) {
-        this.password = password;
-    }
-
 
 
     public void example(){
         userService.checkUser("number","password");
     }
+
+
+    @FXML
+    public void signup(ActionEvent event) throws IOException {
+        Parent registerScene = FXMLLoader.load(getClass().getResource("/view/logOn.fxml"));
+        Scene logOnScene = new Scene(registerScene, 420,500);
+        Stage createSceneStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        createSceneStage.setScene(logOnScene);
+        createSceneStage.show();
+    }
+
+    @FXML
+    public void signin(ActionEvent event) throws IOException{
+        Parent registerScene = FXMLLoader.load(getClass().getResource("/view/selfPage.fxml"));
+        Scene logOnScene = new Scene(registerScene, 400,460);
+        Stage createSceneStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        createSceneStage.setScene(logOnScene);
+        createSceneStage.show();
+    }
+
+
+
 //    User User = new User();
 //    public void setUser(){
 //        User.setUserNumber(number.getText());
@@ -58,5 +64,4 @@ public class logController   {
 //            else System.out.println("登录失败");
 //        }
 //    }
-//
 }
