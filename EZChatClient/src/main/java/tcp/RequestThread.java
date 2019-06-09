@@ -2,13 +2,15 @@ package tcp;
 
 import java.io.*;
 
-public class RequestThread extends Thread{
+public class RequestThread extends Thread {
 
     public PrintWriter out;
+    public MessageEncoder messageEncoder;
 
     public RequestThread() {
         try {
-            out =  new PrintWriter(testTcpClient.client.getOutputStream(), true);
+            out = new PrintWriter(testTcpClient.client.getOutputStream(), true);
+            messageEncoder = new MessageEncoder(out);
             start();
         } catch (Exception e) {
         }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.UserService;
@@ -38,12 +39,35 @@ public class logController   {
 
     @FXML
     public void signin(ActionEvent event) throws IOException{
-        Parent registerScene = FXMLLoader.load(getClass().getResource("/view/selfPage.fxml"));
-        Scene logOnScene = new Scene(registerScene, 400,460);
-        Stage createSceneStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        createSceneStage.setScene(logOnScene);
-        createSceneStage.show();
+        userService.checkUser("456","123");
+        while(UserServiceImp.getLoginFlag()==0){
+
+        }
+        if(UserServiceImp.getLoginFlag()==1){
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wong credential!");
+            alert.setHeaderText(null);
+            alert.setContentText("Sorry, wrong username and password!\n Please try again!");
+            alert.showAndWait();
+
+        }else if(UserServiceImp.getLoginFlag()==2){
+            Parent registerScene = FXMLLoader.load(getClass().getResource("/view/selfPage.fxml"));
+            Scene logOnScene = new Scene(registerScene, 400,460);
+            Stage createSceneStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+            createSceneStage.setScene(logOnScene);
+            createSceneStage.show();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wong credential!");
+            alert.setHeaderText(null);
+            alert.setContentText("Response over time!");
+            alert.showAndWait();
+        }
+
+
     }
 
 

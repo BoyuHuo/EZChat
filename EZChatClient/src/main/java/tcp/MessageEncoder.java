@@ -8,19 +8,33 @@ public class MessageEncoder {
 
     ResponseThread responseThread;
 
-    public static Socket client;
     public static PrintWriter out;
-    public static BufferedReader in;
 
 
-    public MessageEncoder(){};
-    public MessageEncoder(PrintWriter out, BufferedReader in, ResponseThread responseThread) {
 
+    public MessageEncoder() {
     }
 
-    public void encodeMessage(String msg, String operation){
+    public MessageEncoder(PrintWriter out) {
+        this.out = out;
+    }
+
+    public enum Instruction {
+        message, signin, signout;
+
+        public static MessageEncoder.Instruction getInstruction(String instruction) {
+            return valueOf(instruction.toLowerCase());
+        }
+    }
+
+    public void encodeMessage(String msg, String operation) {
         //TODO: impementation : blue
 
-    }
+        switch (MessageEncoder.Instruction.getInstruction(operation)) {
+            case signin:
+                out.println("@signin@"+msg);
+                break;
+        }
 
+    }
 }

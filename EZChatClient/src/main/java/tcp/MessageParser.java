@@ -26,7 +26,6 @@ public class MessageParser {
             primaryStage.show();
         }
 
-
         public void main(String[] args) {
             launch(args);
         }
@@ -34,7 +33,6 @@ public class MessageParser {
 
     public MessageParser() {
     }
-
 
     public MessageParser(PrintWriter out, BufferedReader in) {
     }
@@ -56,9 +54,9 @@ public class MessageParser {
                     break;
                 case signin:
                     if (tempMsg[2].equals("no")) {
-                        System.out.println(tempMsg[2]);
+                        UserServiceImp.setLoginFlag(1);
                     } else {
-                        System.out.println(tempMsg[2]);
+                        UserServiceImp.setLoginFlag(2);
                     }
                     break;
                 case signout:

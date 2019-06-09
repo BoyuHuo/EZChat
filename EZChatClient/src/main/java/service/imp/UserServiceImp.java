@@ -6,11 +6,22 @@ import tcp.MessageEncoder;
 
 public class UserServiceImp implements UserService {
     public static User user = null;
-    public static int loginFlag = 0;
+
+    private static int loginFlag = 0; //0 pending, 1 fail, 2 success
 
 
     MessageEncoder messageEncoder = new MessageEncoder();
+
     public void checkUser(String email, String password) {
-        messageEncoder.encodeMessage("","");
+        setLoginFlag(0);
+        messageEncoder.encodeMessage("123%123","signin");
+    }
+
+    public synchronized static int getLoginFlag() {
+        return loginFlag;
+    }
+
+    public synchronized static void setLoginFlag(int loginFlag) {
+        UserServiceImp.loginFlag = loginFlag;
     }
 }
