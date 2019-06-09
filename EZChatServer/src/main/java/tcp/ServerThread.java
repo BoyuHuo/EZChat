@@ -18,6 +18,8 @@ public class ServerThread extends Thread{
 
     private String name;
 
+    private MessageParser messageParser;
+
     int firstFlag = 0;
 
     public ServerThread(Socket s) throws IOException {
@@ -26,6 +28,8 @@ public class ServerThread extends Thread{
         in = new BufferedReader(new InputStreamReader(
                 client.getInputStream()));
         in.readLine();
+
+        messageParser = new MessageParser(out,in);
 
         start();
     }
