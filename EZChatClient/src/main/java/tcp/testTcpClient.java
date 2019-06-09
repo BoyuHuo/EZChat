@@ -1,6 +1,4 @@
-package service;
-
-import service.imp.ResponseThread;
+package tcp;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

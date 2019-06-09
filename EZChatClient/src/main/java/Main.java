@@ -3,7 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import service.testTcpClient;
+import tcp.testTcpClient;
 
 public class Main extends Application {
 
