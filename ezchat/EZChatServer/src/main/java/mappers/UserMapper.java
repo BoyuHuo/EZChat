@@ -6,13 +6,11 @@ import entity.User;
 
 public interface UserMapper {
 	
-	User selectUserByID(int id);
-    
-    List<User> findUserByName(String username);
+	User checkUser(User user);
 	
-	void insert(User user);
+	void insertUser(User user);
 
-    void updateByPrimaryKey(User user);
+    void updateUser(User user);
     
     void deleteUserByID(int id);
 }

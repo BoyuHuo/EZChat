@@ -10,17 +10,6 @@
         <result property="gender" column="sex" />  
   </resultMap>  
   
-  
-  <select id="selectUserByID" parameterType="java.lang.Integer" resultMap="UserResultMap">
-        select * from USER 
-        where user_id= #{id}
-  </select>
-  
-  <select id="findUserByName"  parameterType="java.lang.String"  resultMap="UserResultMap">
-        select * from USER 
-        where username like '%${value}%'       
-  </select>
-  
   <insert id="insert" parameterType="entity.User" useGeneratedKeys="true" keyProperty="id"> 
         insert into USER(username,password,email,sex) values(#{username},#{password},#{email},#{gender})  
   </insert>  
@@ -33,5 +22,10 @@
   <delete id="deleteUserByID" parameterType="java.lang.Integer">
         delete from USER where user_id = #{id}
   </delete>
+  
+  <select id="checkUser" parameterType="entity.User" resultMap="UserResultMap">
+  	    select * from USER
+  	    where email=#{email} AND password=#{password}
+  </select>
   
 </mapper>
