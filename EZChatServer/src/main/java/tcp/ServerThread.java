@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Date;
+
 import entity.Message;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 public class ServerThread extends Thread{
 
@@ -37,9 +41,8 @@ public class ServerThread extends Thread{
     @Override
     public void run() {
         out.println("Server connected! \n Welcome back! \n Please sign in first! ");
-        System.out.println("Client connected!");
+        System.out.println("New Client connected! IP:"+ client.getInetAddress()+" at " + new Date().toString());
         try {
-
             String line = in.readLine();
             while (!"byeClient".equals(line)) {
 
