@@ -1,4 +1,4 @@
-package service.imp;
+package tcp;
 
 public class MessageParser {
     public enum Instruction {

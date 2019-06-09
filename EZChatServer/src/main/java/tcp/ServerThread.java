@@ -1,4 +1,4 @@
-package service.imp;
+package tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,16 +6,15 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import entity.Message;
-import service.testTcpServer;
 
 public class ServerThread extends Thread{
 
 
     private Socket client;
 
-    private PrintWriter out;
+    private PrintWriter out;  //To client
 
-    private BufferedReader in;
+    private BufferedReader in;  //From client
 
     private String name;
 
@@ -33,17 +32,14 @@ public class ServerThread extends Thread{
 
     @Override
     public void run() {
-        out.println("成功连上聊天室,请输入你的名字：");
-        System.out.println(getName());
+        out.println("Server connected! \n Welcome back! \n Please sign in first! ");
+        System.out.println("Client connected!");
         try {
 
             String line = in.readLine();
             while (!"byeClient".equals(line)) {
 
                 MessageParser.parseMessage(line);
-
-
-
 
 
                 // 查看在线用户列表
@@ -59,8 +55,8 @@ public class ServerThread extends Thread{
                 // 第一次进入，保存名字
                 if (firstFlag == 0) {
                     name = line;
-                    testTcpServer.user_list.add(name);
-                    testTcpServer.thread_list.add(this);
+                    TcpServer.user_list.add(name);
+                    TcpServer.thread_list.add(this);
                     out.println(name + "你好,可以开始聊天了...");
                     System.out.println(name + "连接服务器");
                     pushMessage(name, "进入聊天室");
@@ -80,8 +76,8 @@ public class ServerThread extends Thread{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            testTcpServer.thread_list.remove(this);
-            testTcpServer.user_list.remove(name);
+            TcpServer.thread_list.remove(this);
+            TcpServer.user_list.remove(name);
             pushMessage(name, "退出了聊天室");
         }
     }
@@ -90,9 +86,9 @@ public class ServerThread extends Thread{
     public void pushMessage(String name, String msg) {
         Message message = new Message(name, msg);
         // 放入用户信息
-        testTcpServer.message_list.addLast(message);
+        TcpServer.message_list.addLast(message);
         // 表示可以向其他用户发送消息
-        testTcpServer.isPrint = true;
+        TcpServer.isPrint = true;
     }
 
     // 向客户端发送一条消息
@@ -102,8 +98,8 @@ public class ServerThread extends Thread{
 
     private String listOnlineUsers() {
         String s = "--- Online User list ---\015\012";
-        for (int i = 0; i < testTcpServer.user_list.size(); i++) {
-            s += "[" + testTcpServer.user_list.get(i) + "]\015\012";
+        for (int i = 0; i < TcpServer.user_list.size(); i++) {
+            s += "[" + TcpServer.user_list.get(i) + "]\015\012";
         }
         s += "--------------------";
         return s;
@@ -112,8 +108,8 @@ public class ServerThread extends Thread{
 
     private String listmassage() {
         String s = "--- Message list ---\015\012";
-        for (int i = 0; i < testTcpServer.message_list.size(); i++) {
-            s += "[" + testTcpServer.message_list.get(i) + "]\015\012";
+        for (int i = 0; i < TcpServer.message_list.size(); i++) {
+            s += "[" + TcpServer.message_list.get(i) + "]\015\012";
         }
         s += "--------------------";
         return s;
