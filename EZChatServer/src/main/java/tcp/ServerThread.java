@@ -33,7 +33,7 @@ public class ServerThread extends Thread{
                 client.getInputStream()));
         in.readLine();
 
-        messageParser = new MessageParser(out,in);
+        messageParser = new MessageParser(out,in,this);
 
         start();
     }
@@ -49,20 +49,7 @@ public class ServerThread extends Thread{
                 messageParser.parseMessage(line);
 
                 line = in.readLine();
-
-                // 第一次进入，保存名字
-                if (firstFlag == 0) {
-                    name = line;
-                    messageParser.setName(name);
-                    TcpServer.user_list.add(name);
-                    TcpServer.thread_list.add(this);
-                    out.println(name + "你好,可以开始聊天了...");
-                    System.out.println(name + "连接服务器");
-                    pushMessage(name, "进入聊天室");
-                } else {
-                    pushMessage(name, line);
-                }
-                firstFlag++;
+                
                 line = in.readLine();
                 System.out.println(name + ":" + line);
             }

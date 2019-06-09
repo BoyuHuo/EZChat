@@ -1,6 +1,8 @@
 package tcp;
 
 import entity.Message;
+import entity.User;
+import service.UserService;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,14 +10,22 @@ import java.io.PrintWriter;
 
 public class MessageParser {
 
+    private ServerThread serverThread;
     private PrintWriter out;  //To client
     private BufferedReader in;  //From client
     private String name;
     int firstFlag = 0;
 
-    public MessageParser(PrintWriter out, BufferedReader in) {
+    private UserService userService;
+
+
+
+
+
+    public MessageParser(PrintWriter out, BufferedReader in, ServerThread serverThread) {
         this.out = out;
         this.in = in;
+        this.serverThread = serverThread;
     }
 
 
@@ -35,6 +45,15 @@ public class MessageParser {
                     pushMessage(name, tempMsg[2]);
                     break;
                 case signin:
+                    String[] userCredential = tempMsg[2].split("@");
+                    User user = userService.signIn(userCredential[0],userCredential[1]);
+                    name = user.getUsername();
+                    TcpServer.user_list.add(name);
+                    TcpServer.thread_list.add(serverThread);
+
+                    out.println("Hi, "+name + ", Welcome back!");
+                    System.out.println(name + "has signed in!");
+                    pushMessage(name, "join the chatting room");
                     break;
                 case signout:
                     break;
