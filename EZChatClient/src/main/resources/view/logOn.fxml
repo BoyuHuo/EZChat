@@ -19,8 +19,8 @@
         <TextField id="password" layoutX="151.0" layoutY="198.0" />
         <CheckBox id="male" layoutX="151.0" layoutY="158.0" mnemonicParsing="false" text="Male" />
         <CheckBox id="female" layoutX="244.0" layoutY="158.0" mnemonicParsing="false" text="Female" />
-        <Button layoutX="100.0" layoutY="416.0" mnemonicParsing="false" text="Sure" />
-        <Button layoutX="259.0" layoutY="416.0" mnemonicParsing="false" text="Cancel" />
+        <Button layoutX="100.0" layoutY="416.0" mnemonicParsing="false" text="Sure" onAction="#sureBtn"/>
+        <Button layoutX="259.0" layoutY="416.0" mnemonicParsing="false" text="Cancel" onAction="#cancleBtn" />
         <Text layoutX="43.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
         <TextArea layoutX="151.0" layoutY="256.0" prefHeight="120.0" prefWidth="224.0" />
     </children>
