@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.modifyInformationController">
+    <children>
+        <Button id="edit_profile" layoutX="191.0" layoutY="83.0" mnemonicParsing="false" text="Edit my profile" />
+        <TextArea id="modify_introduction" layoutX="159.0" layoutY="414.0" prefHeight="120.0" prefWidth="224.0" />
+        <Text layoutX="51.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
+        <Button id="cancel_modify" layoutX="267.0" layoutY="574.0" mnemonicParsing="false" text="Cancel" />
+        <Button id="sure_modify" layoutX="108.0" layoutY="574.0" mnemonicParsing="false" text="Sure" />
+        <CheckBox id="modify_female" layoutX="252.0" layoutY="316.0" mnemonicParsing="false" text="Female" />
+        <CheckBox id="modify_male" layoutX="159.0" layoutY="316.0" mnemonicParsing="false" text="Male" />
+        <TextField id="modify_password" layoutX="159.0" layoutY="356.0" />
+        <TextField id="modify_e_mail" layoutX="159.0" layoutY="262.0" />
+        <TextField id="modify_user_name" layoutX="159.0" layoutY="211.0" />
+        <Text layoutX="49.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <Text layoutX="51.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="51.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="51.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
+      <AnchorPane layoutX="43.0" layoutY="53.0" prefHeight="100.0" prefWidth="100.0" />
+    </children>
+</AnchorPane>

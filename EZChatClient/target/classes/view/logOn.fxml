@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.logOnController">
+    <children>
+        <Text layoutX="43.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
+        <Text layoutX="43.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="43.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="41.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <TextField id="user_name" layoutX="151.0" layoutY="53.0" />
+        <TextField id="e_mail" layoutX="151.0" layoutY="104.0" />
+        <TextField id="password" layoutX="151.0" layoutY="198.0" />
+        <CheckBox id="male" layoutX="151.0" layoutY="158.0" mnemonicParsing="false" text="Male" />
+        <CheckBox id="female" layoutX="244.0" layoutY="158.0" mnemonicParsing="false" text="Female" />
+        <Button layoutX="100.0" layoutY="416.0" mnemonicParsing="false" text="Sure" />
+        <Button layoutX="259.0" layoutY="416.0" mnemonicParsing="false" text="Cancel" />
+        <Text layoutX="43.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
+        <TextArea layoutX="151.0" layoutY="256.0" prefHeight="120.0" prefWidth="224.0" />
+    </children>
+</AnchorPane>
