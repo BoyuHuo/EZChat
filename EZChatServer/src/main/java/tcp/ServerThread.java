@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.util.Date;
 
 import entity.Message;
+import service.ServerService;
+import service.imp.ServerServiceImp;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
@@ -23,6 +25,8 @@ public class ServerThread extends Thread{
     private String name;
 
     private MessageParser messageParser;
+
+    private ServerService serverService = new ServerServiceImp();
 
 
 
@@ -59,7 +63,7 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
-            pushMessage(name, " leave the chatting room!");
+            serverService.pushMessage(name, " leave the chatting room!");
         }
     }
 
