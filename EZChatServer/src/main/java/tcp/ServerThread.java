@@ -8,8 +8,8 @@ import java.net.Socket;
 import java.util.Date;
 
 import entity.Message;
-
-import javax.print.attribute.standard.DateTimeAtCompleted;
+import service.ServerService;
+import service.imp.ServerServiceImp;
 
 public class ServerThread extends Thread{
 
@@ -24,6 +24,8 @@ public class ServerThread extends Thread{
 
     private MessageParser messageParser;
 
+    private ServerService serverService = new ServerServiceImp();
+
 
 
     public ServerThread(Socket s) throws IOException {
@@ -33,40 +35,27 @@ public class ServerThread extends Thread{
                 client.getInputStream()));
         in.readLine();
 
-        messageParser = new MessageParser(out,in);
+        messageParser = new MessageParser(out,in,this);
 
         start();
     }
 
     @Override
     public void run() {
-        out.println("Server connected! \n Welcome back! \n Please sign in first! ");
+
+        out.println("Server connected!");
         System.out.println("New Client connected! IP:"+ client.getInetAddress()+" at " + new Date().toString());
+
         try {
+
             String line = in.readLine();
-            while (!"byeClient".equals(line)) {
-
+            while (!line.contains("@bye@")) {
                 messageParser.parseMessage(line);
-
                 line = in.readLine();
-
-                // 第一次进入，保存名字
-                if (firstFlag == 0) {
-                    name = line;
-                    messageParser.setName(name);
-                    TcpServer.user_list.add(name);
-                    TcpServer.thread_list.add(this);
-                    out.println(name + "你好,可以开始聊天了...");
-                    System.out.println(name + "连接服务器");
-                    pushMessage(name, "进入聊天室");
-                } else {
-                    pushMessage(name, line);
-                }
-                firstFlag++;
-                line = in.readLine();
-                System.out.println(name + ":" + line);
             }
             out.println("byeClient");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {// 用户退出聊天室
@@ -77,7 +66,7 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
-            pushMessage(name, "退出了聊天室");
+            serverService.pushMessage(name, " leave the chatting room!");
         }
     }
 
