@@ -45,15 +45,14 @@ public class MessageParser {
                     System.out.println(name + ":" + tempMsg[2]);
                     break;
                 case signin:
-                    String[] userCredential = tempMsg[2].split("@");
+                    String[] userCredential = tempMsg[2].split("%");
                     User user = userService.signIn(userCredential[0],userCredential[1]);
                     name = user.getUsername();
                     TcpServer.user_list.add(name);
                     TcpServer.thread_list.add(serverThread);
-
                     out.println("Hi, "+name + ", Welcome back!");
-                    System.out.println(name + "has signed in!");
-                    serverService.pushMessage(name, "join the chatting room");
+                    System.out.println(name + " has signed in!");
+                    serverService.pushMessage(name, " join the chatting room");
                     break;
                 case signout:
                     break;

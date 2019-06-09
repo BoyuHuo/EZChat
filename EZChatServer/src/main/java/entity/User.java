@@ -6,6 +6,10 @@ public class User {
     private String gender;
     private String email;
 
+    public User(){}
+    public User(String name){
+        this.username = name;
+    }
     public String getUsername() {
         return username;
     }

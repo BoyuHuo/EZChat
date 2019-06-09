@@ -11,8 +11,6 @@ import entity.Message;
 import service.ServerService;
 import service.imp.ServerServiceImp;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-
 public class ServerThread extends Thread{
 
 
@@ -44,15 +42,20 @@ public class ServerThread extends Thread{
 
     @Override
     public void run() {
-        out.println("Server connected! \n Welcome back! \n Please sign in first! ");
+
+        out.println("Server connected!");
         System.out.println("New Client connected! IP:"+ client.getInetAddress()+" at " + new Date().toString());
+
         try {
+
             String line = in.readLine();
             while (!line.contains("@bye@")) {
                 messageParser.parseMessage(line);
                 line = in.readLine();
             }
             out.println("byeClient");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {// 用户退出聊天室
