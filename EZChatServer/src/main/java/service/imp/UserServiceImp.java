@@ -1,8 +1,11 @@
 package service.imp;
 
+import entity.ChattingRoom;
 import entity.User;
 import mappers.UserDataFunction;
 import service.UserService;
+
+import java.util.List;
 
 public class UserServiceImp implements UserService {
     UserDataFunction userDataFunction = new UserDataFunction();
@@ -21,6 +24,16 @@ public class UserServiceImp implements UserService {
 
     public Boolean signUp(User user) {
         //TODO: add user signUp logic : An Hengyang
+
         return null;
     }
+
+    public User updateUserInfo(User user) {
+        //TODO: update user info : An Hengyang
+
+        return null;
+    }
+
+
+
 }

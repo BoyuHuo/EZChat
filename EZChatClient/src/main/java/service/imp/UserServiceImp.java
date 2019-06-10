@@ -17,6 +17,11 @@ public class UserServiceImp implements UserService {
         messageEncoder.encodeMessage(account+"%"+password,"signin");
     }
 
+    public void registerUser(User user) {
+
+    }
+
+
     public synchronized static int getLoginFlag() {
         return loginFlag;
     }
