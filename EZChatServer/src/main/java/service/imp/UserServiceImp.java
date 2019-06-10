@@ -21,6 +21,13 @@ public class UserServiceImp implements UserService {
 
     public Boolean signUp(User user) {
         //TODO: add user signUp logic : An Hengyang
+
+        return null;
+    }
+
+    public User updateUserInfo(User user) {
+        //TODO: update user info : An Hengyang
+
         return null;
     }
 }
