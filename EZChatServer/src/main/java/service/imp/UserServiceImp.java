@@ -1,8 +1,11 @@
 package service.imp;
 
+import entity.ChattingRoom;
 import entity.User;
 import mappers.UserDataFunction;
 import service.UserService;
+
+import java.util.List;
 
 public class UserServiceImp implements UserService {
     UserDataFunction userDataFunction = new UserDataFunction();
@@ -30,4 +33,7 @@ public class UserServiceImp implements UserService {
 
         return null;
     }
+
+
+
 }
