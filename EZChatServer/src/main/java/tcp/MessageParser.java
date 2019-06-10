@@ -30,7 +30,7 @@ public class MessageParser {
 
 
     public enum Instruction {
-        message, signin, signout, userlist, messagelist;
+        message, signin, userlist, messagelist;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -52,7 +52,7 @@ public class MessageParser {
                         name = user.getUsername();
                         TcpServer.user_list.add(name);
                         TcpServer.thread_list.add(serverThread);
-                        out.println("@signin@no");
+                        out.println("@signin@yes");
                         out.println("Hi, "+name + ", Welcome back!");
                         System.out.println(name + " has signed in!");
                         serverService.pushMessage(name, " join the chatting room");
@@ -60,8 +60,6 @@ public class MessageParser {
                         out.println("@signin@no");
                     }
 
-                    break;
-                case signout:
                     break;
                 case userlist:
                     out.println(serverService.listOnlineUsers());

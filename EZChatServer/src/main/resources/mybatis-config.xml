@@ -15,7 +15,7 @@
    
 
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 
 

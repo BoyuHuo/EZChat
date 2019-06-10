@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.io.IOException;
 import java.io.Reader;
 
 
@@ -20,6 +21,9 @@ public class UserDataFunction{
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public UserDataFunction(){
     }
 
     public static SqlSessionFactory getSession(){

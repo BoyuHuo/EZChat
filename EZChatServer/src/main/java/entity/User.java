@@ -1,6 +1,8 @@
 package entity;
 
 public class User {
+    private String id;
+    private String account;
     private String username;
     private String password;
     private String gender;
@@ -40,5 +42,21 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

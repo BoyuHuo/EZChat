@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 public class logController   {
-    @FXML private TextField email;
+    @FXML private TextField account;
     @FXML private TextField password;
 
     UserService userService = new UserServiceImp();
@@ -39,8 +39,7 @@ public class logController   {
 
     @FXML
     public void signin(ActionEvent event) throws IOException{
-
-        userService.checkUser("456","123");
+        userService.checkUser(account.getText(),password.getText());
         while(UserServiceImp.getLoginFlag()==0){
 
         }

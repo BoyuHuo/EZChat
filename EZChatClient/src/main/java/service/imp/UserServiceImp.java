@@ -12,9 +12,9 @@ public class UserServiceImp implements UserService {
 
     MessageEncoder messageEncoder = new MessageEncoder();
 
-    public void checkUser(String email, String password) {
+    public void checkUser(String account, String password) {
         setLoginFlag(0);
-        messageEncoder.encodeMessage("123%123","signin");
+        messageEncoder.encodeMessage(account+"%"+password,"signin");
     }
 
     public synchronized static int getLoginFlag() {

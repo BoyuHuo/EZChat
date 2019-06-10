@@ -7,7 +7,8 @@
         <result property="username" column="username" />  
         <result property="password" column="password" />  
         <result property="email" column="email" />  
-        <result property="gender" column="sex" />  
+        <result property="gender" column="sex" />
+        <result property="account" column="account"/>
   </resultMap>  
   
   <insert id="insert" parameterType="entity.User" useGeneratedKeys="true" keyProperty="id"> 
@@ -25,7 +26,7 @@
   
   <select id="checkUser" parameterType="entity.User" resultMap="UserResultMap">
   	    select * from USER
-  	    where email=#{email} AND password=#{password}
+  	    where account=#{account} AND password=#{password}
   </select>
   
 </mapper>
