@@ -53,7 +53,7 @@ public class ServerThread extends Thread{
                 messageParser.parseMessage(line);
                 line = in.readLine();
             }
-            out.println("byeClient");
+            out.println("@byeClient@1");
 
 
         } catch (Exception e) {

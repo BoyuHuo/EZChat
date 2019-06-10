@@ -1,5 +1,7 @@
 package tcp;
 
+import sun.plugin2.message.Message;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -15,6 +17,8 @@ public class testTcpClient extends Socket {
     public static PrintWriter out;
     public static BufferedReader in;
 
+    public MessageEncoder messageEncoder;
+
     /**
      * 与服务器连接，并输入发送消息
      */
@@ -24,12 +28,8 @@ public class testTcpClient extends Socket {
         out = new PrintWriter(this.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(this.getInputStream()));
         new ResponseThread();
-        out.println("我已经连接服务器");
-        while (true) {
-            in = new BufferedReader(new InputStreamReader(System.in));
-            String input = in.readLine();
-            out.println(input);
-        }
+        new RequestThread();
+
     }
 
 

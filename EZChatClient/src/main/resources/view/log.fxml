@@ -18,8 +18,8 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField id="email" layoutX="347.0" layoutY="234.0" />
-      <TextField id="password" layoutX="347.0" layoutY="298.0" />
+      <TextField fx:id="account" layoutX="347.0" layoutY="234.0" />
+      <TextField fx:id="password" layoutX="347.0" layoutY="298.0" />
       <Button id="log_on" layoutX="459.0" layoutY="376.0" mnemonicParsing="false" text="Log on" onAction="#signup" />
       <Button id="log_in" layoutX="293.0" layoutY="376.0" mnemonicParsing="false" text="Log in" onAction="#signin"/>
    </children>
