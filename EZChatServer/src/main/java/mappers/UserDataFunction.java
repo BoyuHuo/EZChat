@@ -39,15 +39,15 @@ public class UserDataFunction{
     public User checkUser(User newuser) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            UserMapper userMapper  = session.getMapper(UserMapper.class);
-            User user= userMapper.checkUser(newuser);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            User user = userMapper.checkUser(newuser);
             return user;
         } finally {
             session.close();
         }
     }
-    
-    
+
+
     /**
      * Add a new User into database
      * @param user the new user waiting to be added
@@ -92,6 +92,7 @@ public class UserDataFunction{
         } finally {
             session.close();
         }
-	} 
+	}
+
     
 }
