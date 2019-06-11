@@ -62,8 +62,7 @@ public class MessageParser {
                     out.println(serverService.listmassage());
                     break;
                 case createRoom:
-                    String roomName= tempMsg[2];
-                    ChattingRoom chattingRoom = chattingRoomService.createChattingRoom(roomName);
+                    createChattingRoomProcess(tempMsg);
                     break;
                 case joinRoom:
                     break;
@@ -102,6 +101,15 @@ public class MessageParser {
         out.println("@signup@" + resultStr);
     }
 
+    public void createChattingRoomProcess(String[] tempMsg){
+        String roomName= tempMsg[2];
+        ChattingRoom chattingRoom = chattingRoomService.createChattingRoom(roomName);
+        if(chattingRoom!=null){
+            out.println("@createRoom@yes@"+chattingRoom.toString());
+        }else{
+            out.println("@createRoom@no");
+        }
+    }
 
     public String getName() {
         return name;
