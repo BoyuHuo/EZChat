@@ -9,8 +9,13 @@ public class User {
     private String email;
 
     public User(){}
-    public User(String name){
-        this.username = name;
+    public User(String id, String account, String username, String password, String gender, String email){
+        this.id = id;
+        this.account = account;
+        this.username = username;
+        this.password = password;
+        this.gender = gender;
+        this.email = email;
     }
     public String getUsername() {
         return username;
@@ -58,5 +63,9 @@ public class User {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+    public String toString(){
+        String result = ""+id+","+account+","+account+","+password+","+gender+","+email;
+        return result.replace("@","*"); //Since the "@" is indentifier of the our TCP header, we replace it with "*"
     }
 }
