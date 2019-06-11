@@ -58,7 +58,7 @@ public class UserDataFunction{
         	UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.insertUser(user);
             session.commit();
-            System.out.println("add completed");
+            System.out.println("add user completed");
         } finally {
             session.close();
         }
@@ -71,7 +71,7 @@ public class UserDataFunction{
             UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.deleteUserByID(ID);
             session.commit();
-            System.out.println("delete completed");
+            System.out.println("delete user completed");
         } finally {
             session.close();
         }
@@ -88,11 +88,10 @@ public class UserDataFunction{
         	UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.updateUser(user);
             session.commit();
-            System.out.println("update completed");
+            System.out.println("update user completed");
         } finally {
             session.close();
         }
 	}
-
     
 }

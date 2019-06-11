@@ -1,27 +1,31 @@
 package entity;
 
 public class Message {
-    // 用户名
-    String client;
+
+    private String id;
+    private String client;
     // 消息
-    String message;
+    private String message;
+    private String room_id;
+    private String user_id;
+    private String createTime;
+
 
     public Message() {
         super();
     }
 
-    public Message(String client, String message) {
+    public Message(String username,String message){
         super();
-        this.client = client;
+        this.client=username;
+        this.message= message;
+    }
+
+    public Message(String roomID, String userID, String message) {
+        super();
+        this.room_id= roomID;
+        this.user_id= userID;
         this.message = message;
-    }
-
-    public String getName() {
-        return client;
-    }
-
-    public void setName(String name) {
-        this.client = name;
     }
 
     public String getMessage() {
@@ -32,9 +36,30 @@ public class Message {
         this.message = message;
     }
 
+    public String getName(){ return this.client; }
+
+    public void setName(String username){ this.client= username; }
+
+    public String getId(){ return this.id; }
+
+    public void setId(String id){ this.id= id; }
+
+    public String getRoom_id(){ return room_id; }
+
+    public void setRoom_id(String roomID){ this.room_id= roomID; }
+
+    public String getUser_id(){ return this.user_id; }
+
+    public void setUser_id(String userID){ this.user_id= userID; }
+
+    public String getCreateTime(){ return this.createTime; }
+
+    public void setCreateTime(String time){ this.createTime= time; }
+
+
     @Override
     public String toString() {
-        return "Message [client=" + client + ", message=" + message + "]";
+        return "Message [client=" + client + ", message=" + message + ", create time="+ createTime +"]";
     }
 
 }
