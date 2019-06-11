@@ -7,7 +7,7 @@ import service.ChattingRoomService;
 import java.util.List;
 
 public class ChattingRoomServiceImp implements ChattingRoomService {
-    public ChattingRoomService createChattingRoom(String roomName) {
+    public ChattingRoom createChattingRoom(String roomName) {
         // TODO: An hengyang
 
         // call generateToken -> new ChattingRoom -> fill up the fields in ChattingRoom (ps, name, token  (leave the id as null) ) -> store it in database ->return it

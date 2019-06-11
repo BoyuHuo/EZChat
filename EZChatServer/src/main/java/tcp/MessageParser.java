@@ -1,8 +1,11 @@
 package tcp;
 
+import entity.ChattingRoom;
 import entity.User;
+import service.ChattingRoomService;
 import service.ServerService;
 import service.UserService;
+import service.imp.ChattingRoomServiceImp;
 import service.imp.ServerServiceImp;
 import service.imp.UserServiceImp;
 
@@ -20,6 +23,7 @@ public class MessageParser {
 
     private ServerService serverService = new ServerServiceImp();
     private UserService userService = new UserServiceImp();
+    private ChattingRoomService chattingRoomService = new ChattingRoomServiceImp();
 
 
     public MessageParser(PrintWriter out, BufferedReader in, ServerThread serverThread) {
@@ -30,7 +34,7 @@ public class MessageParser {
 
 
     public enum Instruction {
-        message, signin, userlist, messagelist, signup;
+        message, signin, userlist, messagelist, signup, createRoom, joinRoom, history;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -56,6 +60,14 @@ public class MessageParser {
                     break;
                 case messagelist:
                     out.println(serverService.listmassage());
+                    break;
+                case createRoom:
+                    String roomName= tempMsg[2];
+                    ChattingRoom chattingRoom = chattingRoomService.createChattingRoom(roomName);
+                    break;
+                case joinRoom:
+                    break;
+                case history:
                     break;
                 default:
                     break;
@@ -86,8 +98,8 @@ public class MessageParser {
         String[] userInfo = tempMsg[2].split(",");
         User user = new User(userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4], userInfo[5].replace("*", "@"));
         Boolean result = userService.signUp(user);
-        String resultStr = result?"yes":"no";
-        out.println("@signup@"+resultStr);
+        String resultStr = result ? "yes" : "no";
+        out.println("@signup@" + resultStr);
     }
 
 
