@@ -10,4 +10,5 @@ public interface ChattingRoomService {
     String generateToken();
     List<ChattingRoom> getHistoryChattingRoomList(String userId);
     List<Message> getHistoryChattingHistory(String roomId);
+    ChattingRoom joinChattingRoom(String token);
 }

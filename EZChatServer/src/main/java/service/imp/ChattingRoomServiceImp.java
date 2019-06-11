@@ -29,4 +29,9 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
         return null;
     }
 
+    public ChattingRoom joinChattingRoom(String token) {
+
+        return null;
+    }
+
 }

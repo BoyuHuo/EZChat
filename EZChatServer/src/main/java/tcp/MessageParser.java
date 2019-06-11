@@ -34,7 +34,7 @@ public class MessageParser {
 
 
     public enum Instruction {
-        message, signin, userlist, messagelist, signup, createRoom, joinRoom, history;
+        message, signin, userlist, messagelist, signup, createroom, joinroom, history;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -61,10 +61,11 @@ public class MessageParser {
                 case messagelist:
                     out.println(serverService.listmassage());
                     break;
-                case createRoom:
+                case createroom:
                     createChattingRoomProcess(tempMsg);
                     break;
-                case joinRoom:
+                case joinroom:
+                    joinChattingRoomProcess(tempMsg);
                     break;
                 case history:
                     break;
@@ -108,6 +109,14 @@ public class MessageParser {
             out.println("@createRoom@yes@"+chattingRoom.toString());
         }else{
             out.println("@createRoom@no");
+        }
+    }
+    public void joinChattingRoomProcess(String[] tempMsg){
+        ChattingRoom chattingRoom = chattingRoomService.joinChattingRoom(tempMsg[2]);
+        if(chattingRoom!=null){
+            out.println("@joinroom@yes@"+chattingRoom.toString());
+        }else {
+            out.println("@joinroom@no");
         }
     }
 
