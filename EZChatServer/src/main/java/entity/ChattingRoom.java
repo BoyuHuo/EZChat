@@ -5,6 +5,11 @@ public class ChattingRoom {
     private String token;
     private String name;
 
+    public ChattingRoom(String token,String roomname){
+        this.token=token;
+        this.name= roomname;
+    }
+
     public String getId() {
         return id;
     }
