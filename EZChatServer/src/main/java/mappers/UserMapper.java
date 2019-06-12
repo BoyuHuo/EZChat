@@ -5,6 +5,8 @@ import entity.User;
 public interface UserMapper {
 	
 	User checkUser(User user);
+
+	User selectUserByID(String id);
 	
 	void insertUser(User user);
 
