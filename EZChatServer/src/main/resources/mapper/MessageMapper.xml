@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mappers.MessageMapper">
+    <resultMap type="entity.Message" id="MsgResultMap">
+        <id property="id" column="message_id" />
+        <result property="room_id" column="room_id" />
+        <result property="user_id" column="user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="message" column="content" />
+    </resultMap>
+
+    <insert id="insertMessage" parameterType="entity.Message" useGeneratedKeys="true" keyProperty="id">
+        insert into MESSAGE(room_id,user_id,content) values(#{id},#{room_id},#{user_id},#{message})
+    </insert>
+
+    <select id="selectMessage" parameterType="entity.Message" resultMap="MsgResultMap">
+  	    select * from MESSAGE
+  	    where message_id= #{id}
+    </select>
+
+    <update id="updateMessage" parameterType="entity.Message">
+        update MESSAGE set room_id=#{room_id},user_id=#{user_id},content=#{message}
+        where message_id=#{id}
+    </update>
+
+
+
+</mapper>

@@ -11,12 +11,12 @@
         <result property="account" column="account"/>
   </resultMap>  
   
-  <insert id="insert" parameterType="entity.User" useGeneratedKeys="true" keyProperty="id"> 
-        insert into USER(username,password,email,sex) values(#{username},#{password},#{email},#{gender})  
+  <insert id="insertUser" parameterType="entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into USER(username,password,email,sex,account) values(#{username},#{password},#{email},#{gender},#{account})
   </insert>  
      
-  <update id="updateByPrimaryKey" parameterType="entity.User">
-        update USER set username=#{username},password=#{password},email=#{email},sex=#{gender} 
+  <update id="updateUser" parameterType="entity.User">
+        update USER set username=#{username},password=#{password},email=#{email},sex=#{gender}
         where user_id=#{id}
   </update>
   
@@ -27,6 +27,11 @@
   <select id="checkUser" parameterType="entity.User" resultMap="UserResultMap">
   	    select * from USER
   	    where account=#{account} AND password=#{password}
+  </select>
+
+  <select id="selectUserByID" parameterType="java.lang.String" resultMap="UserResultMap">
+  	    select * from USER
+  	    where user_id=#{id}
   </select>
   
 </mapper>
