@@ -23,7 +23,7 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
         chatRoomDataFunction.addChatRoom(chattingRoom);
         // call generateToken -> new ChattingRoom -> fill up the fields in ChattingRoom (ps, name, token  (leave the id as null) ) -> store it in database ->return it
-        return null;
+        return chattingRoom;
     }
 
     public String generateToken() {
