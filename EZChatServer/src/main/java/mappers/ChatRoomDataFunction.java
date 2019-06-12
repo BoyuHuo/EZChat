@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.session.SqlSession;
 import java.io.Reader;
 import entity.*;
+import java.util.List;
 
 
 public class ChatRoomDataFunction{
@@ -36,6 +37,17 @@ public class ChatRoomDataFunction{
             session.commit();
             System.out.println("add room completed");
         } finally {
+            session.close();
+        }
+    }
+    public  List<ChattingRoom> selectChatroom(String userID){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            ChatRoomMapper roomMapper = session.getMapper(ChatRoomMapper.class);
+            List <ChattingRoom> chattingRooms = roomMapper.selectRoom(userID);
+            System.out.println("List");
+            return chattingRooms;
+        }finally {
             session.close();
         }
     }

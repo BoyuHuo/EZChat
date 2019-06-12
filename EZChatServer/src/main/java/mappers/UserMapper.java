@@ -1,6 +1,9 @@
 package mappers;
 
+import entity.Message;
 import entity.User;
+
+import java.util.List;
 
 public interface UserMapper {
 	
@@ -11,4 +14,6 @@ public interface UserMapper {
     void updateUser(User user);
     
     void deleteUserByID(int id);
+
+    List<Message> selectMessage(String roomID);
 }

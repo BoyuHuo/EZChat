@@ -7,5 +7,5 @@ import java.util.List;
 public interface ChatRoomMapper {
 
     void insertRoom(ChattingRoom chatroom);
-
+    List<ChattingRoom> selectRoom(String userID);
 }
