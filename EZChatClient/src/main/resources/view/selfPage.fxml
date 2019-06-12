@@ -13,8 +13,8 @@
         <Pane id="user_name" layoutX="135.0" layoutY="17.0" prefHeight="40.0" prefWidth="201.0" />
         <Pane id="user_id" layoutX="135.0" layoutY="72.0" prefHeight="40.0" prefWidth="201.0" />
         <Button id="edit_information" layoutX="36.0" layoutY="173.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="315.0" text="Edit" />
-        <Button id="input_room_number" layoutX="36.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="315.0" text="Input Room Number" />
-        <Button id="create_room" layoutX="36.0" layoutY="325.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="315.0" text="Create a Room" />
+        <Button id="input_room_number" layoutX="36.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="315.0" text="Input Room Number" onAction="#joinRoomBtn"/>
+        <Button id="create_room" layoutX="36.0" layoutY="325.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="315.0" text="Create a Room" onAction="#createRoomBtn"/>
       <AnchorPane id="profile" layoutX="25.0" layoutY="16.0" prefHeight="100.0" prefWidth="100.0" />
     </children>
 </AnchorPane>
