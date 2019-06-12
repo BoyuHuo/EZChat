@@ -15,7 +15,7 @@ import java.util.List;
 import mappers.*;
 
 public class ChattingRoomServiceImp implements ChattingRoomService {
-    public ChattingRoomService createChattingRoom(String roomName) {
+    public ChattingRoom createChattingRoom(String roomName) {
         // TODO: An hengyang
         String token = this.generateToken();
         ChattingRoom chattingRoom = new ChattingRoom(token, roomName);
