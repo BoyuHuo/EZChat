@@ -9,10 +9,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.List;
+import mappers.*;
 
 public class ChattingRoomServiceImp implements ChattingRoomService {
     public ChattingRoomService createChattingRoom(String roomName) {
         // TODO: An hengyang
+        String token = this.generateToken();
+        ChattingRoom chattingRoom = new ChattingRoom(token,roomName);
+        chattingRoom.setId(null);
+        ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
+        chatRoomDataFunction.addChatRoom(chattingRoom);
 
         // call generateToken -> new ChattingRoom -> fill up the fields in ChattingRoom (ps, name, token  (leave the id as null) ) -> store it in database ->return it
         return null;
@@ -32,7 +38,6 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
     public List<ChattingRoom> getHistoryChattingRoomList(String userId) {
         //TODO: An Hengyang
