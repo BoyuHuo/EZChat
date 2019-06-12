@@ -10,8 +10,8 @@
 <AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.inputRoomNumController">
    <children>
       <Text layoutX="23.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please input your room number : " />
-      <Button id="close_input_room_num" layoutX="150.0" layoutY="141.0" mnemonicParsing="false" text="Cancel" />
-      <Button id="sure_input_room_number" layoutX="38.0" layoutY="141.0" mnemonicParsing="false" text="Sure" textAlignment="JUSTIFY" />
+      <Button id="close_input_room_num" onAction="#clickButtonExit" layoutX="150.0" layoutY="141.0" mnemonicParsing="false" text="Cancel" />
+      <Button id="sure_input_room_number" onAction="#clicksureButton" layoutX="38.0" layoutY="141.0" mnemonicParsing="false" text="Sure" textAlignment="JUSTIFY" />
       <TextField id="room_number" layoutX="23.0" layoutY="77.0" />
    </children>
 </AnchorPane>

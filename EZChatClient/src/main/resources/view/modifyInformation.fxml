@@ -9,10 +9,10 @@
 
 <AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.modifyInformationController">
     <children>
-        <Button id="edit_profile" layoutX="191.0" layoutY="83.0" mnemonicParsing="false" text="Edit my profile" />
+        <Button id="edit_profile" layoutX="191.0" layoutY="83.0"  mnemonicParsing="false" text="Edit my profile" />
         <TextArea id="modify_introduction" layoutX="159.0" layoutY="414.0" prefHeight="120.0" prefWidth="224.0" />
         <Text layoutX="51.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
-        <Button id="cancel_modify" layoutX="267.0" layoutY="574.0" mnemonicParsing="false" text="Cancel" />
+        <Button id="cancel_modify" layoutX="267.0" layoutY="574.0" onAction="#clickButtonExit" mnemonicParsing="false" text="Cancel" />
         <Button id="sure_modify" layoutX="108.0" layoutY="574.0" mnemonicParsing="false" text="Sure" />
         <CheckBox id="modify_female" layoutX="252.0" layoutY="316.0" mnemonicParsing="false" text="Female" />
         <CheckBox id="modify_male" layoutX="159.0" layoutY="316.0" mnemonicParsing="false" text="Male" />
