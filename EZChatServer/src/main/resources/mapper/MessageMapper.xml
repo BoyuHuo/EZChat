@@ -10,7 +10,7 @@
     </resultMap>
 
     <insert id="insertMessage" parameterType="entity.Message" useGeneratedKeys="true" keyProperty="id">
-        insert into MESSAGE(message_id,room_id,user_id,content) values(#{id},#{room_id},#{user_id},#{message})
+        insert into MESSAGE(room_id,user_id,content) values(#{id},#{room_id},#{user_id},#{message})
     </insert>
 
     <select id="selectMessage" parameterType="entity.Message" resultMap="MsgResultMap">
@@ -22,5 +22,7 @@
         update MESSAGE set room_id=#{room_id},user_id=#{user_id},content=#{message}
         where message_id=#{id}
     </update>
+
+
 
 </mapper>

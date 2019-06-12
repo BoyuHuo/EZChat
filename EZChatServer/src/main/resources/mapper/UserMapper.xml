@@ -28,5 +28,10 @@
   	    select * from USER
   	    where account=#{account} AND password=#{password}
   </select>
+
+  <select id="selectUserByID" parameterType="java.lang.String" resultMap="UserResultMap">
+  	    select * from USER
+  	    where user_id=#{id}
+  </select>
   
 </mapper>

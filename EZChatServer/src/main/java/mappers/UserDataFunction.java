@@ -47,7 +47,6 @@ public class UserDataFunction{
         }
     }
 
-
     /**
      * Add a new User into database
      * @param user the new user waiting to be added

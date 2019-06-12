@@ -45,6 +45,7 @@ public class MessageDataFunction {
         try {
             MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
             Message msg= msgMapper.selectMessage(id);
+            System.out.println("select message completed");
             return msg;
         } finally {
             session.close();
@@ -57,6 +58,7 @@ public class MessageDataFunction {
             MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
             msgMapper.updateMessage(msg);
             session.commit();
+            System.out.println("update message completed");
         } finally {
             session.close();
         }
