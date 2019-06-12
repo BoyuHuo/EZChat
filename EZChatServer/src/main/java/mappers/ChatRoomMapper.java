@@ -10,4 +10,5 @@ public interface ChatRoomMapper {
     ChattingRoom selectRoomByID(String id);
     List<Message> selectAllMessage(ChattingRoom room);
 
+    //List<ChattingRoom> selectRoom(String userID);
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public interface MessageMapper {
 
     void insertMessage(Message msg);
-    Message selectMessage(String id);
+    List<Message> selectMessage(String id);
     void updateMessage(Message msg);
 }

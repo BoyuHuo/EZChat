@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MessageDataFunction {
@@ -45,12 +47,25 @@ public class MessageDataFunction {
         try {
             MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
             Message msg= msgMapper.selectMessage(id);
-            System.out.println("select message completed");
             return msg;
         } finally {
             session.close();
         }
     }
+
+    /*  An hengyang
+    *   public List<Message> selectMessage(String id) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
+            List<Message> messages = new ArrayList<>();
+            messages = msgMapper.selectMessage(id);
+            return messages;
+        } finally {
+            session.close();
+        }
+    }
+    * */
 
     public void updateMessage(Message msg) {
         SqlSession session = sqlSessionFactory.openSession();
@@ -58,7 +73,6 @@ public class MessageDataFunction {
             MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
             msgMapper.updateMessage(msg);
             session.commit();
-            System.out.println("update message completed");
         } finally {
             session.close();
         }
