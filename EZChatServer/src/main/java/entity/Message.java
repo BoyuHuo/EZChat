@@ -2,14 +2,19 @@ package entity;
 
 public class Message {
 
-    private String id;
+
+    private String id = "";
     // 消息
     private String message;
     private String room_id;
-    private String user_id;
+
+    private String user_id = "";
     private String createTime;
 
     private String user_name;
+
+    private String client;
+
 
 
 

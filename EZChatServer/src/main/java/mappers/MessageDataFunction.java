@@ -36,7 +36,6 @@ public class MessageDataFunction {
             MessageMapper msgMapper  = session.getMapper(MessageMapper.class);
             msgMapper.insertMessage(msg);
             session.commit();
-            System.out.println("add message completed");
         } finally {
             session.close();
         }

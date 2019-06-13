@@ -2,12 +2,12 @@ package entity;
 
 public class Message {
 
-    private String id;
+    private String id = "";
     private String client;
     // 消息
     private String message;
     private String room_id;
-    private String user_id;
+    private String user_id = "";
     private String user_name;
     private String createTime;
 
@@ -60,6 +60,7 @@ public class Message {
 
     @Override
     public String toString() {
+
         return id+"@"+room_id+"@"+user_id+"@"+user_name+"@"+message.replace("@","*");
     }
 

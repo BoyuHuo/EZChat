@@ -1,7 +1,9 @@
 package tcp;
 
 import controller.SelfPageController;
+import entity.ChatManager;
 import entity.ChattingRoom;
+import entity.Message;
 import entity.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import java.io.PrintWriter;
 public class MessageParser {
 
     private UserService userService = new UserServiceImp();
+    private ChatManager chatManager = new ChatManager();
 
     public class Main extends Application {
 
@@ -55,7 +58,12 @@ public class MessageParser {
         if (tempMsg.length >= 2) {
             switch (Instruction.getInstruction(tempMsg[1])) {
                 case message:
-                    System.out.println(tempMsg[2]);
+                    Message message = new Message();
+                    message.setRoom_id( tempMsg[3]);
+                    message.setUser_name( tempMsg[5]);
+                    message.setMessage(tempMsg[6]);
+
+                    chatManager.setMessage(chatManager.getMessage()+tempMsg[5]+": "+tempMsg[6]);
                     break;
                 case signin:
                     signInProcess(tempMsg);

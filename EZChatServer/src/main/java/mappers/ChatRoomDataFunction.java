@@ -38,7 +38,6 @@ public class ChatRoomDataFunction {
             ChatRoomMapper roomMapper = session.getMapper(ChatRoomMapper.class);
             id = roomMapper.insertRoom(room);
             session.commit();
-            System.out.println("add room completed");
         } finally {
             session.close();
         }
@@ -53,10 +52,9 @@ public class ChatRoomDataFunction {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             for (Message msg : list) {
                 User user = userMapper.selectUserByID(msg.getUser_id());
-                msg.setName(user.getUsername());
+                msg.setUser_name(user.getUsername());
             }
             room.setMessageList(list);
-            System.out.println("select messages completed");
             return list;
         } finally {
             session.close();
@@ -68,7 +66,6 @@ public class ChatRoomDataFunction {
         try {
             ChatRoomMapper roomMapper = session.getMapper(ChatRoomMapper.class);
             ChattingRoom newroom = roomMapper.selectRoomByToken(token);
-            System.out.println("select room completed");
             return newroom;
         } finally {
             session.close();
