@@ -30,16 +30,18 @@ public class ChatRoomDataFunction{
         return sqlSessionFactory;
     }
 
-    public void addChatRoom(ChattingRoom room){
+    public ChattingRoom addChatRoom(ChattingRoom room){
         SqlSession session = sqlSessionFactory.openSession();
+        ChattingRoom result= new ChattingRoom();
         try {
             ChatRoomMapper roomMapper  = session.getMapper(ChatRoomMapper.class);
-            roomMapper.insertRoom(room);
+            result= roomMapper.insertRoom(room);
             session.commit();
             System.out.println("add room completed");
         } finally {
             session.close();
         }
+        return result;
     }
 
     public List<Message> selectAllMessage(ChattingRoom room){

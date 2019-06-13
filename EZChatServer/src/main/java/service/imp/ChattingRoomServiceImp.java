@@ -21,7 +21,7 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
         ChattingRoom chattingRoom = new ChattingRoom(token, roomName);
         chattingRoom.setId(null);
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
-        chatRoomDataFunction.addChatRoom(chattingRoom);
+        chattingRoom = chatRoomDataFunction.addChatRoom(chattingRoom);
         return chattingRoom;
     }
 
@@ -54,7 +54,7 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
     }
 
     public List<Message> getHistoryChattingHistory(String roomId) {
-    List<Message> messages = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
         ChattingRoom cr = new ChattingRoom();
         cr.setId(roomId);

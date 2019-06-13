@@ -3,7 +3,7 @@ package entity;
 import java.util.List;
 
 public class ChattingRoom {
-    private String id;
+    private int id;
     private String token;
     private String name;
     private List<Message> messageList;
@@ -14,14 +14,6 @@ public class ChattingRoom {
     }
 
     public ChattingRoom(){}
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getToken() {
         return token;
@@ -42,6 +34,15 @@ public class ChattingRoom {
     public List<Message> getMessageList(){ return messageList; }
 
     public void setMessageList(List<Message> list){ this.messageList= list; }
+
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId(){
+        return id;
+    }
 
     public String toString(){
         return ""+id+","+token+","+name;

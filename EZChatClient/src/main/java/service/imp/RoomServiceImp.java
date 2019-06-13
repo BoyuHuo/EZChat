@@ -12,13 +12,33 @@ public class RoomServiceImp implements RoomService {
     MessageEncoder messageEncoder = new MessageEncoder();
 
 
+
+
     @Override
     public void creatRoom(String roomName) {
-
+        setCreateRoomFlag(0);
+        messageEncoder.encodeMessage(roomName, "createroom");
     }
 
     @Override
     public void joinRoom(String token) {
+        setJoinRoomFlag(0);
+        messageEncoder.encodeMessage(token, "joinroom");
+    }
 
+    synchronized public static int getCreateRoomFlag() {
+        return createRoomFlag;
+    }
+
+    synchronized public static void setCreateRoomFlag(int createRoomFlag) {
+        RoomServiceImp.createRoomFlag = createRoomFlag;
+    }
+
+    synchronized public static int getJoinRoomFlag() {
+        return joinRoomFlag;
+    }
+
+    synchronized public static void setJoinRoomFlag(int joinRoomFlag) {
+        RoomServiceImp.joinRoomFlag = joinRoomFlag;
     }
 }

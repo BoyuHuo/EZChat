@@ -1,14 +1,17 @@
 package tcp;
 
 import controller.SelfPageController;
+import entity.ChattingRoom;
 import entity.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import service.RoomService;
 import service.UserService;
 
+import service.imp.RoomServiceImp;
 import service.imp.UserServiceImp;
 
 import java.io.BufferedReader;
@@ -69,6 +72,24 @@ public class MessageParser {
                         UserServiceImp.setSignupFlag(1);
                     } else {
                         UserServiceImp.setSignupFlag(2);
+                    }
+                    break;
+                case createroom:
+                    if(tempMsg[2].equals("no")){
+                        RoomServiceImp.setCreateRoomFlag(1);
+                    }else {
+                        RoomServiceImp.setCreateRoomFlag(2);
+                        String[] roomInfo = tempMsg[3].split(",");
+                        ChattingRoom chattingRoom = new ChattingRoom(roomInfo[0],roomInfo[1],roomInfo[3]);
+                        RoomServiceImp.room = chattingRoom;
+                        System.out.println("sdfsdf"+tempMsg[3]);
+                    }
+                    break;
+                case joinroom:
+                    if(tempMsg[2].equals("no")){
+                        RoomServiceImp.setJoinRoomFlag(1);
+                    }else {
+                        RoomServiceImp.setJoinRoomFlag(2);
                     }
                     break;
                 case signout:
