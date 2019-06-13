@@ -13,6 +13,8 @@ public class ChattingRoom {
         this.name= roomname;
     }
 
+    public ChattingRoom(){}
+
     public String getId() {
         return id;
     }

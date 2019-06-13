@@ -15,16 +15,11 @@ import service.imp.UserServiceImp;
 import java.io.IOException;
 
 
-public class LogController {
+public class SignInController {
     @FXML private TextField account;
     @FXML private TextField password;
 
     UserService userService = new UserServiceImp();
-
-
-    public void example(){
-        userService.checkUser("number","password");
-    }
 
 
     @FXML
@@ -40,11 +35,11 @@ public class LogController {
     @FXML
     public void signin(ActionEvent event) throws IOException{
         userService.checkUser(account.getText(),password.getText());
+
         while(UserServiceImp.getLoginFlag()==0){
-
         }
-        if(UserServiceImp.getLoginFlag()==1){
 
+        if(UserServiceImp.getLoginFlag()==1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Wong credential!");
             alert.setHeaderText(null);
@@ -52,8 +47,8 @@ public class LogController {
             alert.showAndWait();
 
         }else if(UserServiceImp.getLoginFlag()==2){
-            Parent registerScene = FXMLLoader.load(getClass().getResource("/view/selfPage.fxml"));
-            Scene logOnScene = new Scene(registerScene, 400,460);
+            Parent signInScene = FXMLLoader.load(getClass().getResource("/view/selfPage.fxml"));
+            Scene logOnScene = new Scene(signInScene, 400,460);
             Stage createSceneStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
             createSceneStage.setScene(logOnScene);
