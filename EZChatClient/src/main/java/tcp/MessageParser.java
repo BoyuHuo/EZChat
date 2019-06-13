@@ -78,11 +78,14 @@ public class MessageParser {
                     if(tempMsg[2].equals("no")){
                         RoomServiceImp.setCreateRoomFlag(1);
                     }else {
-                        RoomServiceImp.setCreateRoomFlag(2);
+
                         String[] roomInfo = tempMsg[3].split(",");
-                        ChattingRoom chattingRoom = new ChattingRoom(roomInfo[0],roomInfo[1],roomInfo[3]);
+                        ChattingRoom chattingRoom = new ChattingRoom(roomInfo[1],roomInfo[2]);
+                        chattingRoom.setId(Integer.parseInt(roomInfo[0]));
                         RoomServiceImp.room = chattingRoom;
                         System.out.println("sdfsdf"+tempMsg[3]);
+
+                        RoomServiceImp.setCreateRoomFlag(2);
                     }
                     break;
                 case joinroom:

@@ -60,7 +60,7 @@ public class CreateRoomController {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
                     // ... user chose OK
-                    System.out.println(RoomServiceImp.room.getToken()+"123");
+                    token.setText(RoomServiceImp.room.getToken());
                     alert.close();
 
                 } else {
