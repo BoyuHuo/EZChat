@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 public class MessageParser {
 
     private UserService userService = new UserServiceImp();
-    private ChatManager chatManager = new ChatManager();
+
 
     public class Main extends Application {
 
@@ -63,7 +63,7 @@ public class MessageParser {
                     message.setUser_name( tempMsg[5]);
                     message.setMessage(tempMsg[6]);
 
-                    chatManager.setMessage(chatManager.getMessage()+tempMsg[5]+": "+tempMsg[6]);
+                    ChatManager.getInstance().setMessage(  ChatManager.getInstance().getMessage()+tempMsg[5]+": "+tempMsg[6] +"\n");
                     break;
                 case signin:
                     signInProcess(tempMsg);

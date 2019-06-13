@@ -29,8 +29,10 @@ public class ServerServiceImp implements ServerService {
 
     // 放入消息队列末尾，准备发送给客户端
     public void pushMessage(String roomId,String name, String msg) {
+        System.out.println(roomId);
         Message message = new Message(name, msg);
-        message.setRoom_id(roomId);
+        message.setRoom_id(Integer.parseInt(roomId));
+
         // 放入用户信息
         TcpServer.message_list.addLast(message);
         // 表示可以向其他用户发送消息

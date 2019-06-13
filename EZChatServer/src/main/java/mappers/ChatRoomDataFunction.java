@@ -51,7 +51,7 @@ public class ChatRoomDataFunction {
             List<Message> list = roomMapper.selectAllMessage(room);
             UserMapper userMapper = session.getMapper(UserMapper.class);
             for (Message msg : list) {
-                User user = userMapper.selectUserByID(msg.getUser_id());
+                User user = userMapper.selectUserByID(""+msg.getUser_id());
                 msg.setUser_name(user.getUsername());
             }
             room.setMessageList(list);

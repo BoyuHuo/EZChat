@@ -6,9 +6,9 @@ public class Message {
     private String id = "";
     // 消息
     private String message;
-    private String room_id;
+    private int room_id;
 
-    private String user_id = "";
+    private int user_id;
     private String createTime;
 
     private String user_name;
@@ -30,8 +30,8 @@ public class Message {
 
     public Message(String roomID, String userID, String message) {
         super();
-        this.room_id= roomID;
-        this.user_id= userID;
+        this.room_id= Integer.parseInt(roomID);
+        this.user_id= Integer.parseInt(userID);
         this.message = message;
     }
 
@@ -48,13 +48,13 @@ public class Message {
 
     public void setId(String id){ this.id= id; }
 
-    public String getRoom_id(){ return room_id; }
+    public int getRoom_id(){ return room_id; }
 
-    public void setRoom_id(String roomID){ this.room_id= roomID; }
+    public void setRoom_id(int roomID){ this.room_id= roomID; }
 
-    public String getUser_id(){ return this.user_id; }
+    public int getUser_id(){ return this.user_id; }
 
-    public void setUser_id(String userID){ this.user_id= userID; }
+    public void setUser_id(int userID){ this.user_id= userID; }
 
     public String getCreateTime(){ return this.createTime; }
 

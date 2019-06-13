@@ -51,8 +51,8 @@ public class MessageParser {
             switch (Instruction.getInstruction(tempMsg[1])) {
                 case message:
                     Message message = new Message();
-                    message.setRoom_id(tempMsg[3]);
-                    message.setUser_id(tempMsg[4]);
+                    message.setRoom_id(Integer.parseInt(tempMsg[3]));
+                    message.setUser_id(Integer.parseInt(tempMsg[4]));
                     message.setMessage(tempMsg[6]);
                     messageService.saveMessage(message);
 
@@ -124,21 +124,23 @@ public class MessageParser {
     public void joinChattingRoomProcess(String[] tempMsg){
         ChattingRoom chattingRoom = chattingRoomService.joinChattingRoom(tempMsg[2]);
 
-        if(TcpServer.room_map.get(tempMsg[2])==null){
-            TcpServer.room_map.put(tempMsg[2],new ArrayList<>());
+        if(TcpServer.room_map.get(""+chattingRoom.getId())==null){
+            TcpServer.room_map.put(""+chattingRoom.getId(),new ArrayList<>());
         }
-
-        if(!TcpServer.room_map.get(tempMsg[2]).contains(serverThread)){
-            TcpServer.room_map.get(tempMsg[2]).add(serverThread);
+        if(!TcpServer.room_map.get(""+chattingRoom.getId()).contains(serverThread)){
+            serverThread.setRoomId(""+chattingRoom.getId());
+            TcpServer.room_map.get(""+chattingRoom.getId()).add(serverThread);
         }
 
         if(chattingRoom!=null){
             out.println("@joinroom@yes@"+chattingRoom.toString());
+            serverThread.setRoomId(tempMsg[2]);
+            serverService.pushMessage(chattingRoom.getId()+"",name, " join the chatting room");
         }else {
             out.println("@joinroom@no");
         }
 
-        serverService.pushMessage(chattingRoom.getId()+"",name, " join the chatting room");
+
     }
 
     public String getName() {

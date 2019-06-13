@@ -4,17 +4,31 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class ChatManager extends Observable {
-    static private String message;
-    static private ArrayList<User> users;
+    private String message ="";
+    private ArrayList<User> users;
+
+    private static ChatManager instance = new ChatManager();
+
+
+
+    private ChatManager(){}
+
+
+    public static ChatManager getInstance(){
+        return instance;
+    }
+
 
     synchronized public String getMessage() {
         return message;
     }
 
     synchronized public void setMessage(String message) {
-        ChatManager.message = message;
+        this.message = message;
+
         setChanged();
-        notifyObservers();
+
+        notifyObservers(this);
     }
 
     synchronized public ArrayList<User> getUsers() {
@@ -22,8 +36,8 @@ public class ChatManager extends Observable {
     }
 
     synchronized public void setUsers(ArrayList<User> users) {
-        ChatManager.users = users;
+        this.users = users;
         setChanged();
-        notifyObservers();
+        notifyObservers(this);
     }
 }

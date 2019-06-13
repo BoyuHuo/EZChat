@@ -28,7 +28,6 @@ public class ChatController implements Initializable, Observer {
 
     public static ChattingRoom room;
 
-    ChatManager chatManager = new ChatManager();
 
     @FXML
     TextField token;
@@ -55,15 +54,16 @@ public class ChatController implements Initializable, Observer {
         message.setName(SelfPageController.user.getUsername());
         message.setUser_id(SelfPageController.user.getId());
         message.setRoom_id(""+room.getId());
+        message.setMessage(input.getText());
         messageService.sendMessage(message);
-        chatManager.setMessage(chatManager.getMessage()+"You: "+message.getMessage()+"\n");
+        ChatManager.getInstance().setMessage(ChatManager.getInstance().getMessage()+"You: "+message.getMessage()+"\n");
         input.setText("");
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        chatManager.addObserver(this);
+        ChatManager.getInstance().addObserver(this);
 
         room_name.setText(room.getName());
         token.setText(room.getToken());
@@ -71,7 +71,8 @@ public class ChatController implements Initializable, Observer {
 
     @Override
     synchronized public void update(Observable observable, Object o) {
-        message_box.setText(chatManager.getMessage());
+        System.out.println("update");
+        message_box.setText(ChatManager.getInstance().getMessage());
     }
 }
 

@@ -28,14 +28,13 @@ public class PrintOutThread extends Thread {
                 continue;
             }
             // 将缓存在队列中的消息按顺序发送到各客户端，并从队列中清除。
-            Message message = (Message) TcpServer.message_list.getFirst();
+            Message message = TcpServer.message_list.getFirst();
             // 对所有的用户的线程遍历，如果不是自己发的消息就广播给其他人
-            for (int i = 0; i < TcpServer.thread_list.size(); i++) {
-                // 由于添加线程和用户是一起的，所以i所对应的用户就是i所对应的线程，可以根据这个判断是不是自己的线程
-                ServerThread thread = TcpServer.thread_list.get(i);
-                if (message.getUser_name() != TcpServer.user_list.get(i)) {
+            System.out.println("里面的是"+ message.getRoom_id());
+            for (int i = 0; i < TcpServer.room_map.get(""+message.getRoom_id()).size(); i++) {
+
+                ServerThread thread = TcpServer.room_map.get(""+message.getRoom_id()).get(i);
                     thread.sendMessage(message);
-                }
             }
             TcpServer.message_list.removeFirst();
             TcpServer.isPrint = TcpServer.message_list.size() > 0 ? true : false;
