@@ -19,9 +19,9 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
     public ChattingRoom createChattingRoom(String roomName) {
         String token = this.generateToken();
         ChattingRoom chattingRoom = new ChattingRoom(token, roomName);
-        chattingRoom.setId(null);
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
-        chatRoomDataFunction.addChatRoom(chattingRoom);
+        int id = chatRoomDataFunction.addChatRoom(chattingRoom);
+        chattingRoom.setId(id);
         return chattingRoom;
     }
 
@@ -42,6 +42,7 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
     }
 
     public List<ChattingRoom> getHistoryChattingRoomList(String userId) {
+        //TODO: baiyu
 /*        List<ChattingRoom> rooms = new ArrayList<>();
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
         rooms = chatRoomDataFunction.selectChatroom(userId);
@@ -53,17 +54,20 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
     }
 
     public List<Message> getHistoryChattingHistory(String roomId) {
-/*        List<Message> messages = new ArrayList<>();
-        MessageDataFunction messageDataFunction = new MessageDataFunction();
-        messages = messageDataFunction.selectMessage(roomId);
+        List<Message> messages = new ArrayList<>();
+        ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
+        ChattingRoom cr = new ChattingRoom();
+        cr.setId(Integer.parseInt(roomId));
+        messages = chatRoomDataFunction.selectAllMessage(cr);
         System.out.println(messages);
-        return messages;*/
-        return null;
+        return messages;
     }
 
     public ChattingRoom joinChattingRoom(String token) {
+        ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
+        ChattingRoom chattingRoom = chatRoomDataFunction.selectRoomByToken(token);
 
-        return null;
+        return chattingRoom;
     }
 
 }

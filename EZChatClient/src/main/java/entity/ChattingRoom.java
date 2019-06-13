@@ -1,17 +1,19 @@
 package entity;
 
+import java.util.List;
+
 public class ChattingRoom {
-    private String id;
+    private int id;
     private String token;
     private String name;
+    private List<Message> messageList;
 
-    public String getId() {
-        return id;
+    public ChattingRoom(String token,String roomname){
+        this.token=token;
+        this.name= roomname;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public ChattingRoom(){}
 
     public String getToken() {
         return token;
@@ -27,6 +29,19 @@ public class ChattingRoom {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Message> getMessageList(){ return messageList; }
+
+    public void setMessageList(List<Message> list){ this.messageList= list; }
+
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId(){
+        return id;
     }
 
     public String toString(){

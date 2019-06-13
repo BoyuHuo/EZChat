@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<AnchorPane prefHeight="471.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
         <Text layoutX="43.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
-        <Text layoutX="43.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
-        <Text layoutX="43.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
-        <Text layoutX="41.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
-        <TextField id="user_name" layoutX="151.0" layoutY="53.0" />
-        <TextField id="e_mail" layoutX="151.0" layoutY="104.0" />
-        <TextField id="password" layoutX="151.0" layoutY="198.0" />
-        <CheckBox id="male" layoutX="151.0" layoutY="158.0" mnemonicParsing="false" text="Male" />
-        <CheckBox id="female" layoutX="244.0" layoutY="158.0" mnemonicParsing="false" text="Female" />
-        <Button layoutX="100.0" layoutY="416.0" mnemonicParsing="false" text="Sure" onAction="#sureBtn"/>
-        <Button layoutX="259.0" layoutY="416.0" mnemonicParsing="false" text="Cancel" onAction="#cancleBtn" />
-        <Text layoutX="43.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
-        <TextArea layoutX="151.0" layoutY="256.0" prefHeight="120.0" prefWidth="224.0" />
+        <Text layoutX="58.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="51.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="59.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <Text layoutX="14.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:" />
+        <Text layoutX="58.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account:" />
+        <TextField fx:id="user_name" layoutX="151.0" layoutY="53.0" />
+        <TextField fx:id="e_mail" layoutX="151.0" layoutY="104.0" />
+        <TextField fx:id="password" layoutX="154.0" layoutY="239.0" />
+        <TextField fx:id="password_confirm" layoutX="155.0" layoutY="288.0" />
+        <TextField fx:id="account" layoutX="151.0" layoutY="150.0" />
+        <RadioButton fx:id="user_gender_male" layoutX="154.0" layoutY="203.0" mnemonicParsing="false" selected="true" text="Male">
+            <toggleGroup>
+                <ToggleGroup fx:id="sex" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton layoutX="238.0" layoutY="203.0" mnemonicParsing="false" text="Female" toggleGroup="$sex" />
+        <Button layoutX="101.0" layoutY="373.0" mnemonicParsing="false" onAction="#sureBtn" text="Sure" />
+        <Button layoutX="256.0" layoutY="373.0" mnemonicParsing="false" onAction="#cancleBtn" text="Cancel" />
+
+
     </children>
 </AnchorPane>
