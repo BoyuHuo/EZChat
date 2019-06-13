@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mappers.ChatRoomMapper">
+
+    <resultMap type="entity.ChattingRoom" id="RoomResultMap">
+        <id property="id" column="room_id" />
+        <result property="token" column="token" />
+        <result property="name" column="name" />
+        <collection property="messageList" javaType="List" column="id" ofType="entity.Message" select="selectAllMessage"/>
+
+    </resultMap>
+
+    <insert id="insertRoom" parameterType="entity.ChattingRoom" useGeneratedKeys="true" keyProperty="id">
+        insert into CHATTING_ROOM(token,name) values(#{token},#{name})
+    </insert>
+
+    <select id="selectRoomByID" parameterType="java.lang.String" resultMap="RoomResultMap">
+  	    select * from CHATTING_ROOM
+  	    where room_id=#{id}
+    </select>
+
+    <select id="selectAllMessage" parameterType="entity.ChattingRoom" resultMap="mappers.MessageMapper.MsgResultMap">
+  	    select * from MESSAGE
+  	    where room_id= #{id}
+    </select>
+
+</mapper>

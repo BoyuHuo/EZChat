@@ -1,5 +1,6 @@
 package mappers;
 
+import entity.Message;
 import entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 
 public class UserDataFunction{
@@ -39,15 +41,14 @@ public class UserDataFunction{
     public User checkUser(User newuser) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            UserMapper userMapper  = session.getMapper(UserMapper.class);
-            User user= userMapper.checkUser(newuser);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            User user = userMapper.checkUser(newuser);
             return user;
         } finally {
             session.close();
         }
     }
-    
-    
+
     /**
      * Add a new User into database
      * @param user the new user waiting to be added
@@ -58,7 +59,7 @@ public class UserDataFunction{
         	UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.insertUser(user);
             session.commit();
-            System.out.println("add completed");
+            System.out.println("add user completed");
         } finally {
             session.close();
         }
@@ -71,7 +72,7 @@ public class UserDataFunction{
             UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.deleteUserByID(ID);
             session.commit();
-            System.out.println("delete completed");
+            System.out.println("delete user completed");
         } finally {
             session.close();
         }
@@ -88,10 +89,10 @@ public class UserDataFunction{
         	UserMapper userMapper  = session.getMapper(UserMapper.class);
             userMapper.updateUser(user);
             session.commit();
-            System.out.println("update completed");
+            System.out.println("update user completed");
         } finally {
             session.close();
         }
-	} 
-    
+	}
+
 }

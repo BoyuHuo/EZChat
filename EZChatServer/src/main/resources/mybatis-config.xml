@@ -16,6 +16,8 @@
 
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/ChatRoomMapper.xml"/>
+        <mapper resource="mapper/MessageMapper.xml"/>
     </mappers>
 
 

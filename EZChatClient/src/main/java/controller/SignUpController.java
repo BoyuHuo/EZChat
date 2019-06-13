@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class logOnController {
+public class SignUpController {
 
     @FXML
     public void sureBtn(ActionEvent event) throws IOException {

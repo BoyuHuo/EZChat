@@ -15,7 +15,7 @@ import service.imp.UserServiceImp;
 import java.io.IOException;
 
 
-public class logController   {
+public class LogController {
     @FXML private TextField account;
     @FXML private TextField password;
 
