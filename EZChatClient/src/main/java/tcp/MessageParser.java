@@ -40,7 +40,7 @@ public class MessageParser {
     }
 
     public enum Instruction {
-        message, signin, signout;
+        message, signin,signup,createroom,joinroom, signout;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -62,6 +62,13 @@ public class MessageParser {
                         String[] userInfo = tempMsg[3].split(",");
                         User user = new User(userInfo[0],userInfo[1],userInfo[2],userInfo[3],userInfo[4],userInfo[5].replace("*","@"));
                         SelfPageController.user = user;
+                    }
+                    break;
+                case signup:
+                    if(tempMsg[2].equals("no")){
+                        UserServiceImp.setSignupFlag(1);
+                    } else {
+                        UserServiceImp.setSignupFlag(2);
                     }
                     break;
                 case signout:

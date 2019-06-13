@@ -33,11 +33,11 @@ public class UserServiceImp implements UserService {
         UserServiceImp.loginFlag = loginFlag;
     }
 
-    public static int getSignupFlag() {
+    public synchronized static int getSignupFlag() {
         return signupFlag;
     }
 
-    public static void setSignupFlag(int signupFlag) {
+    public synchronized static void setSignupFlag(int signupFlag) {
         UserServiceImp.signupFlag = signupFlag;
     }
 
