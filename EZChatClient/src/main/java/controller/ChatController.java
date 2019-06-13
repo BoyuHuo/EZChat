@@ -1,10 +1,13 @@
 package controller;
 
+import entity.ChatManager;
 import entity.ChattingRoom;
 import entity.Message;
 import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -16,20 +19,28 @@ import service.imp.RoomServiceImp;
 import service.imp.UserServiceImp;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.ResourceBundle;
 
-public class ChatController {
+public class ChatController implements Initializable, Observer {
 
     public static ChattingRoom room;
+
+    ChatManager chatManager = new ChatManager();
 
     @FXML
     TextField token;
     @FXML
-    TextArea message;
+    TextArea message_box;
     @FXML
     TextField input;
+    @FXML
+    Label room_name;
 
     @FXML
-    private TableView userList;
+    private TableView user_list;
 
     public RoomService roomService =new RoomServiceImp();
     public UserService userService = new UserServiceImp();
@@ -42,10 +53,22 @@ public class ChatController {
         }
         Message message =new Message();
         message.setName(SelfPageController.user.getUsername());
+        message.setUser_id(SelfPageController.user.getId());
+        message.setRoom_id(""+room.getId());
         messageService.sendMessage(message);
-
-
+        message_box.setText(message_box.getText()+"You:"+ message.getMessage()+"\n");
+        input.setText("");
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        chatManager.addObserver(this);
+    }
+
+    @Override
+    synchronized public void update(Observable observable, Object o) {
+        message_box.setText(message_box.getText()+(String)o+"\n");
+    }
 }
 
