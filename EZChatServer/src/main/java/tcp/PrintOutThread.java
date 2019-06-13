@@ -33,7 +33,7 @@ public class PrintOutThread extends Thread {
             for (int i = 0; i < TcpServer.thread_list.size(); i++) {
                 // 由于添加线程和用户是一起的，所以i所对应的用户就是i所对应的线程，可以根据这个判断是不是自己的线程
                 ServerThread thread = TcpServer.thread_list.get(i);
-                if (message.getName() != TcpServer.user_list.get(i)) {
+                if (message.getUser_name() != TcpServer.user_list.get(i)) {
                     thread.sendMessage(message);
                 }
             }

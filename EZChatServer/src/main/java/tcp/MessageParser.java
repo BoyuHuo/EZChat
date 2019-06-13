@@ -1,16 +1,19 @@
 package tcp;
 
 import entity.ChattingRoom;
+import entity.Message;
 import entity.User;
 import service.ChattingRoomService;
+import service.MessageService;
 import service.ServerService;
 import service.UserService;
 import service.imp.ChattingRoomServiceImp;
+import service.imp.MessageServiceImp;
 import service.imp.ServerServiceImp;
 import service.imp.UserServiceImp;
-
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class MessageParser {
 
@@ -24,6 +27,7 @@ public class MessageParser {
     private ServerService serverService = new ServerServiceImp();
     private UserService userService = new UserServiceImp();
     private ChattingRoomService chattingRoomService = new ChattingRoomServiceImp();
+    private MessageService messageService = new MessageServiceImp();
 
 
     public MessageParser(PrintWriter out, BufferedReader in, ServerThread serverThread) {
@@ -46,8 +50,14 @@ public class MessageParser {
         if (tempMsg.length >= 3) {
             switch (Instruction.getInstruction(tempMsg[1])) {
                 case message:
-                    serverService.pushMessage(name, tempMsg[2]);
-                    System.out.println(name + ":" + tempMsg[2]);
+                    Message message = new Message();
+                    message.setRoom_id(tempMsg[3]);
+                    message.setUser_id(tempMsg[4]);
+                    message.setMessage(tempMsg[6]);
+                    messageService.saveMessage(message);
+
+                    serverService.pushMessage(tempMsg[3], name, tempMsg[6]);
+
                     break;
                 case signin:
                     userValidedProcess(tempMsg);
@@ -88,7 +98,7 @@ public class MessageParser {
             out.println("@signin@yes@" + user.toString());
             out.println("Hi, " + name + ", Welcome back!");
             System.out.println(name + " has signed in!");
-            serverService.pushMessage(name, " join the chatting room");
+
         } else {
             out.println("@signin@no");
         }
@@ -113,11 +123,22 @@ public class MessageParser {
     }
     public void joinChattingRoomProcess(String[] tempMsg){
         ChattingRoom chattingRoom = chattingRoomService.joinChattingRoom(tempMsg[2]);
+
+        if(TcpServer.room_map.get(tempMsg[2])==null){
+            TcpServer.room_map.put(tempMsg[2],new ArrayList<>());
+        }
+
+        if(!TcpServer.room_map.get(tempMsg[2]).contains(serverThread)){
+            TcpServer.room_map.get(tempMsg[2]).add(serverThread);
+        }
+
         if(chattingRoom!=null){
             out.println("@joinroom@yes@"+chattingRoom.toString());
         }else {
             out.println("@joinroom@no");
         }
+
+        serverService.pushMessage(chattingRoom.getId()+"",name, " join the chatting room");
     }
 
     public String getName() {

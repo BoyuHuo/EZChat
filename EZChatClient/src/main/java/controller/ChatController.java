@@ -56,7 +56,7 @@ public class ChatController implements Initializable, Observer {
         message.setUser_id(SelfPageController.user.getId());
         message.setRoom_id(""+room.getId());
         messageService.sendMessage(message);
-        message_box.setText(message_box.getText()+"You:"+ message.getMessage()+"\n");
+        chatManager.setMessage(chatManager.getMessage()+"You: "+message.getMessage()+"\n");
         input.setText("");
     }
 
@@ -64,11 +64,14 @@ public class ChatController implements Initializable, Observer {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         chatManager.addObserver(this);
+
+        room_name.setText(room.getName());
+        token.setText(room.getToken());
     }
 
     @Override
     synchronized public void update(Observable observable, Object o) {
-        message_box.setText(message_box.getText()+(String)o+"\n");
+        message_box.setText(chatManager.getMessage());
     }
 }
 

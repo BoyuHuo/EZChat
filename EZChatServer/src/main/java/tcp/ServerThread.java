@@ -22,6 +22,8 @@ public class ServerThread extends Thread{
 
     private String name;
 
+    private String roomId;
+
     private MessageParser messageParser;
 
     private ServerService serverService = new ServerServiceImp();
@@ -66,15 +68,23 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
-            serverService.pushMessage(name, " leave the chatting room!");
+            TcpServer.room_map.get(roomId).remove(this);
+            serverService.pushMessage(roomId,name, " leave the chatting room!");
         }
     }
 
 
     // 向客户端发送一条消息
     public void sendMessage(Message message) {
-        out.println(message.getName() + ":" + message.getMessage());
+        out.println("@message@"+message.toString());
     }
 
 
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
 }
