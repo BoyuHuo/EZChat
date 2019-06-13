@@ -18,7 +18,7 @@
          <children>
             <TextArea fx:id="message" layoutX="17.0" layoutY="10.0" prefHeight="314.0" prefWidth="517.0" />
          </children></AnchorPane>
-      <TableView id="user_list" layoutX="586.0" layoutY="84.0" prefHeight="362.0" prefWidth="200.0">
+      <TableView fx:id="user_list" layoutX="586.0" layoutY="84.0" prefHeight="362.0" prefWidth="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
@@ -28,7 +28,7 @@
          <children>
             <TextField fx:id="input" layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="434.0" />
          </children></AnchorPane>
-      <Button id="send_message" layoutX="496.0" layoutY="420.0" mnemonicParsing="false" text="Send" />
+      <Button id="send_message" layoutX="496.0" layoutY="420.0" mnemonicParsing="false" text="Send" onAction="#sendMessage" />
       <TextField fx:id="token" disable="true" layoutX="285.0" layoutY="37.0" prefHeight="30.0" prefWidth="272.0" />
       <Label layoutX="227.0" layoutY="40.0" prefHeight="24.0" prefWidth="57.0" text="Token:" />
    </children>

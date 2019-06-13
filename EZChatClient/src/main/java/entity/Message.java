@@ -8,6 +8,7 @@ public class Message {
     private String message;
     private String room_id;
     private String user_id;
+    private String user_name;
     private String createTime;
 
 
@@ -59,7 +60,14 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message [client=" + client + ", message=" + message + ", create time="+ createTime +"]";
+        return id+"@"+room_id+"@"+user_id+"@"+user_name+"@"+message.replace("@","*");
     }
 
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 }
