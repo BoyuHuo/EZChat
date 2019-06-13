@@ -12,8 +12,6 @@ public class RoomServiceImp implements RoomService {
     MessageEncoder messageEncoder = new MessageEncoder();
 
 
-
-
     @Override
     public void creatRoom(String roomName) {
         setCreateRoomFlag(0);

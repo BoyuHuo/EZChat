@@ -9,7 +9,7 @@ import java.util.List;
 public interface ChatRoomMapper {
 
     int insertRoom(ChattingRoom chatroom);
-    ChattingRoom selectRoomByID(String id);
+    ChattingRoom selectRoomByToken(String token);
     List<Message> selectAllMessage(ChattingRoom room);
 
     //List<ChattingRoom> selectRoom(String userID);

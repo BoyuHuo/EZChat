@@ -14,9 +14,9 @@
         insert into CHATTING_ROOM(token,name) values(#{token},#{name})
     </insert>
 
-    <select id="selectRoomByID" parameterType="java.lang.String" resultMap="RoomResultMap">
+    <select id="selectRoomByToken" parameterType="java.lang.String" resultMap="RoomResultMap">
   	    select * from CHATTING_ROOM
-  	    where room_id=#{id}
+  	    where token=#{token}
     </select>
 
     <select id="selectAllMessage" parameterType="entity.ChattingRoom" resultMap="mappers.MessageMapper.MsgResultMap">

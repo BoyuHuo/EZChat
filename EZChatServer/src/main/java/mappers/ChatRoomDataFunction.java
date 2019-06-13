@@ -63,11 +63,11 @@ public class ChatRoomDataFunction {
         }
     }
 
-    public ChattingRoom selectRoomByID(String id) {
+    public ChattingRoom selectRoomByToken(String token) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             ChatRoomMapper roomMapper = session.getMapper(ChatRoomMapper.class);
-            ChattingRoom newroom = roomMapper.selectRoomByID(id);
+            ChattingRoom newroom = roomMapper.selectRoomByToken(token);
             System.out.println("select room completed");
             return newroom;
         } finally {

@@ -55,7 +55,7 @@ public class SelfPageController implements Initializable {
     @FXML
     private void clickCreateRoom(ActionEvent event) throws IOException {
         Parent registerScene = FXMLLoader.load(getClass().getResource("/view/createRoom.fxml"));
-        Scene logOnScene = new Scene(registerScene, 300, 200);
+        Scene logOnScene = new Scene(registerScene, 300, 240);
         Stage createSceneStage = new Stage();
         createSceneStage.setScene(logOnScene);
         createSceneStage.show();
