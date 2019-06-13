@@ -8,7 +8,7 @@
 
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.chatController">
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
    <children>
       <AnchorPane id="room_num" layoutX="24.0" layoutY="32.0" prefHeight="39.0" prefWidth="321.0" />
       <AnchorPane layoutX="24.0" layoutY="74.0" prefHeight="336.0" prefWidth="549.0" />

@@ -13,7 +13,7 @@ import entity.User;
 import java.awt.*;
 import java.io.IOException;
 
-public class modifyInformationController {
+public class ModifyInformationController {
 
     // users' information
     @FXML

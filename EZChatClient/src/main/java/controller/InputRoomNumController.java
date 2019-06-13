@@ -7,32 +7,33 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class createRoomController {
+public class InputRoomNumController {
 
-    //A random number which is room number
+    // area to input chatting room number
     @FXML
-    private Text token;
+    private TextField room_number;
 
-    // set up a chatting room
+    // close
     @FXML
-    private void clickCreateRoom(ActionEvent event) throws IOException
+    private void clickButtonExit()
+    {
+        Platform.exit();
+    }
+
+    // certify inputed room number
+    @FXML
+    private void clicksureButton (ActionEvent event) throws IOException
     {
         Parent newGameScreen = FXMLLoader.load(getClass().getResource("/view/chat.fxml"));
         Scene newGameScene = new Scene(newGameScreen, 800,500);
         Stage newGameScreenStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         newGameScreenStage.setScene(newGameScene);
         newGameScreenStage.show();
-    }
-
-    // close
-    @FXML
-    private void clickButtonExit() {
-        Platform.exit();
     }
 
 }

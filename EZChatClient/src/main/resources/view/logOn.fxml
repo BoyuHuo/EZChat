@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.logOnController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
         <Text layoutX="43.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
         <Text layoutX="43.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />

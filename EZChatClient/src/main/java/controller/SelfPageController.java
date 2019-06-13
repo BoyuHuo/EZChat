@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 
 
-public class selfPageController  implements Initializable {
+public class SelfPageController implements Initializable {
     @FXML
     private Text email;
     private Text name;

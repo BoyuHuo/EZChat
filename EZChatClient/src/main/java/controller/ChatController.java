@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 import javax.swing.text.TableView;
 
-public class chatController {
+public class ChatController {
 
 // A table which contain user information in chat
 

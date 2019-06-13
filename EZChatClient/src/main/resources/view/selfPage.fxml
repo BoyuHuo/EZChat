@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.selfPageController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelfPageController">
     <children>
         <Line endX="100.0" layoutX="235.0" layoutY="65.0" startX="-100.0" />
         <Pane id="user_name" layoutX="135.0" layoutY="17.0" prefHeight="40.0" prefWidth="201.0" />

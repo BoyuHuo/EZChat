@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.modifyInformationController">
+<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyInformationController">
     <children>
         <Button id="edit_profile" layoutX="191.0" layoutY="83.0"  mnemonicParsing="false" text="Edit my profile" />
         <TextArea id="modify_introduction" layoutX="159.0" layoutY="414.0" prefHeight="120.0" prefWidth="224.0" />
