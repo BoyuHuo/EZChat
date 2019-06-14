@@ -64,6 +64,7 @@ public class ChattingRoomServiceImp implements ChattingRoomService {
     }
 
     public ChattingRoom joinChattingRoom(String token) {
+
         ChatRoomDataFunction chatRoomDataFunction = new ChatRoomDataFunction();
         ChattingRoom chattingRoom = chatRoomDataFunction.selectRoomByToken(token);
 

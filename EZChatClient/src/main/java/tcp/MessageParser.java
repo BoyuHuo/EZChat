@@ -1,7 +1,9 @@
 package tcp;
 
 import controller.SelfPageController;
+import entity.ChatManager;
 import entity.ChattingRoom;
+import entity.Message;
 import entity.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +18,12 @@ import service.imp.UserServiceImp;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class MessageParser {
 
     private UserService userService = new UserServiceImp();
+
 
     public class Main extends Application {
 
@@ -43,7 +47,7 @@ public class MessageParser {
     }
 
     public enum Instruction {
-        message, signin,signup,createroom,joinroom, signout;
+        message, signin,signup,createroom,joinroom, signout,userlist;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -55,7 +59,12 @@ public class MessageParser {
         if (tempMsg.length >= 2) {
             switch (Instruction.getInstruction(tempMsg[1])) {
                 case message:
-                    System.out.println(tempMsg[2]);
+                    Message message = new Message();
+                    message.setRoom_id( tempMsg[3]);
+                    message.setUser_name( tempMsg[5]);
+                    message.setMessage(tempMsg[6]);
+
+                    ChatManager.getInstance().setMessage(  ChatManager.getInstance().getMessage()+tempMsg[5]+": "+tempMsg[6] +"\n");
                     break;
                 case signin:
                     signInProcess(tempMsg);
@@ -70,6 +79,16 @@ public class MessageParser {
                     joinRoomProcess(tempMsg);
                     break;
                 case signout:
+                    break;
+                case userlist:
+                    String[] userlistInfo = tempMsg[6].split(",");
+                    ArrayList<String> userlist = new ArrayList<>();
+                    for(int i=0;i<userlistInfo.length;i++){
+                        if(!"".equals(userlistInfo[i])&&userlistInfo[i]!=null){
+                            userlist.add(userlistInfo[i]);
+                        }
+                    }
+                    ChatManager.getInstance().setUsers(userlist);
                     break;
                 default:
                     System.out.println("Unknow header!");

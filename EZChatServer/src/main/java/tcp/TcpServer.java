@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class TcpServer extends ServerSocket {
     public static boolean isPrint = false;
     public static List<String> user_list = new ArrayList<String>();// the collection of sign-in users
     public static List<ServerThread> thread_list = new ArrayList<ServerThread>();// 服务器已启用线程集合
+    public static HashMap<String,List<String>> room_user_list = new HashMap<>();
+    public static HashMap<String,List<ServerThread>> room_map = new HashMap<>();
     public static LinkedList<Message> message_list = new LinkedList<Message>();// 存放用户消息的队列
 
     /**
@@ -35,6 +38,16 @@ public class TcpServer extends ServerSocket {
         } finally {
             close();
         }
+    }
+
+    public static String getUserListByRoom(String roomId){
+        String result = "";
+        if(room_user_list.get(roomId)!=null){
+            for(String user: room_user_list.get(roomId)){
+                result+=user+",";
+            }
+        }
+        return result;
     }
 
 

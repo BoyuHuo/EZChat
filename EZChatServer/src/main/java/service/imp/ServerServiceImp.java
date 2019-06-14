@@ -25,12 +25,14 @@ public class ServerServiceImp implements ServerService {
         return s;
     }
 
+
+
     // 放入消息队列末尾，准备发送给客户端
-    public void pushMessage(String name, String msg) {
-        Message message = new Message(name, msg);
-        // 放入用户信息
-        TcpServer.message_list.addLast(message);
-        // 表示可以向其他用户发送消息
-        TcpServer.isPrint = true;
+    public void pushMessage(Message message) {
+
+
+            TcpServer.message_list.addLast(message);
+
+            TcpServer.isPrint = true;
     }
 }
