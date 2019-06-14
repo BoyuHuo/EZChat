@@ -4,13 +4,13 @@ import entity.ChatManager;
 import entity.ChattingRoom;
 import entity.Message;
 import entity.User;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import service.MessageService;
 import service.RoomService;
 import service.UserService;
@@ -38,22 +38,25 @@ public class ChatController implements Initializable, Observer {
     @FXML
     Label room_name;
 
-    @FXML
-    private TableView user_list;
 
-    public RoomService roomService =new RoomServiceImp();
+    private final ObservableList<String> usersData = FXCollections.observableArrayList();
+
+    @FXML
+    private ListView<String> user_list;
+
+    public RoomService roomService = new RoomServiceImp();
     public UserService userService = new UserServiceImp();
     public MessageService messageService = new MessageServiceImp();
 
     @FXML
     public void sendMessage(ActionEvent event) throws IOException {
-        if("".equals(input.getText())||input.getText()==null){
+        if ("".equals(input.getText()) || input.getText() == null) {
             return;
         }
-        Message message =new Message();
+        Message message = new Message();
         message.setName(SelfPageController.user.getUsername());
         message.setUser_id(SelfPageController.user.getId());
-        message.setRoom_id(""+room.getId());
+        message.setRoom_id("" + room.getId());
         message.setMessage(input.getText());
         messageService.sendMessage(message);
         input.setText("");
@@ -62,16 +65,34 @@ public class ChatController implements Initializable, Observer {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        usersData.clear();
+        user_list.setItems(usersData);
+
+
         ChatManager.getInstance().addObserver(this);
 
         room_name.setText(room.getName());
         token.setText(room.getToken());
     }
 
+    public void updateUserList() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                usersData.clear();
+                for (String name : ChatManager.getInstance().getUsers()) {
+                    usersData.add(name);
+                }
+            }
+        });
+    }
+
+
     @Override
     synchronized public void update(Observable observable, Object o) {
-        System.out.println("update");
         message_box.setText(ChatManager.getInstance().getMessage());
+        updateUserList();
+
     }
 }
 

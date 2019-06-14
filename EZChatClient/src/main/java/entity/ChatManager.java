@@ -5,7 +5,7 @@ import java.util.Observable;
 
 public class ChatManager extends Observable {
     private String message ="";
-    private ArrayList<User> users;
+    private ArrayList<String> users = new ArrayList<>();
 
     private static ChatManager instance = new ChatManager();
 
@@ -31,11 +31,11 @@ public class ChatManager extends Observable {
         notifyObservers(this);
     }
 
-    synchronized public ArrayList<User> getUsers() {
+    synchronized public ArrayList<String> getUsers() {
         return users;
     }
 
-    synchronized public void setUsers(ArrayList<User> users) {
+    synchronized public void setUsers(ArrayList<String> users) {
         this.users = users;
         setChanged();
         notifyObservers(this);

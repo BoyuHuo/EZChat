@@ -53,6 +53,7 @@ public class MessageParser {
                     Message message = new Message();
                     message.setRoom_id(Integer.parseInt(tempMsg[3]));
                     message.setUser_id(Integer.parseInt(tempMsg[4]));
+                    message.setUser_name(name);
                     message.setMessage(tempMsg[6]);
                     messageService.saveMessage(message);
 

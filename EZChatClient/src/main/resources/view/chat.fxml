@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.ListView?>
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
    <children>
       <AnchorPane id="room_num" layoutX="24.0" layoutY="32.0" prefHeight="39.0" prefWidth="163.0">
@@ -18,12 +19,8 @@
          <children>
             <TextArea fx:id="message_box" layoutX="17.0" layoutY="10.0" prefHeight="314.0" prefWidth="517.0" />
          </children></AnchorPane>
-      <TableView fx:id="user_list" layoutX="586.0" layoutY="84.0" prefHeight="362.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <ListView fx:id="user_list" layoutX="586.0" layoutY="84.0" prefHeight="362.0" prefWidth="200.0">
+      </ListView>
       <AnchorPane layoutX="28.0" layoutY="410.0" prefHeight="49.0" prefWidth="459.0">
          <children>
             <TextField fx:id="input" layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="434.0" />
