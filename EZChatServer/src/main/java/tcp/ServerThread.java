@@ -69,14 +69,24 @@ public class ServerThread extends Thread{
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
             TcpServer.room_map.get(roomId).remove(this);
-            serverService.pushMessage(roomId,name, " leave the chatting room!");
+            Message message = new Message();
+            message.setRoom_id(Integer.parseInt(roomId));
+            message.setUser_name(name);
+            message.setMessage(" leave the chatting room!");
+            serverService.pushMessage(message);
         }
     }
 
 
     // 向客户端发送一条消息
     public void sendMessage(Message message) {
-        out.println("@message@"+message.toString());
+        if(message.getType_flag()==1){
+            out.println("@userlist@"+message.toString());
+        }
+        else{
+            out.println("@message@"+message.toString());
+        }
+
     }
 
 
