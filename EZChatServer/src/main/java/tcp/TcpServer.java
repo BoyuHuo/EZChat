@@ -40,6 +40,16 @@ public class TcpServer extends ServerSocket {
         }
     }
 
+    public static String getUserListByRoom(String roomId){
+        String result = "";
+        if(room_user_list.get(roomId)!=null){
+            for(String user: room_user_list.get(roomId)){
+                result+=user+",";
+            }
+        }
+        return result;
+    }
+
 
 
 }

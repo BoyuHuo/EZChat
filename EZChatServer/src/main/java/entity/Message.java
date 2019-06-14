@@ -15,6 +15,8 @@ public class Message {
 
     private String client;
 
+    private int type_flag = 0;
+
 
 
 
@@ -71,5 +73,13 @@ public class Message {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public int getType_flag() {
+        return type_flag;
+    }
+
+    public void setType_flag(int type_flag) {
+        this.type_flag = type_flag;
     }
 }

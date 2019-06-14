@@ -56,7 +56,7 @@ public class MessageParser {
                     message.setMessage(tempMsg[6]);
                     messageService.saveMessage(message);
 
-                    serverService.pushMessage(tempMsg[3], name, tempMsg[6]);
+                    serverService.pushMessage(tempMsg[3], name, tempMsg[6],0);
 
                     break;
                 case signin:
@@ -141,7 +141,10 @@ public class MessageParser {
         if(chattingRoom!=null){
             out.println("@joinroom@yes@"+chattingRoom.toString());
             serverThread.setRoomId(tempMsg[2]);
-            serverService.pushMessage(chattingRoom.getId()+"",name, " join the chatting room");
+            serverService.pushMessage(chattingRoom.getId()+"",name, " join the chatting room",0);
+
+            serverService.pushMessage(chattingRoom.getId()+"", name,TcpServer.getUserListByRoom(chattingRoom.getId()+""),1);
+
         }else {
             out.println("@joinroom@no");
         }
