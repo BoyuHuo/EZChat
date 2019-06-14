@@ -56,7 +56,6 @@ public class ChatController implements Initializable, Observer {
         message.setRoom_id(""+room.getId());
         message.setMessage(input.getText());
         messageService.sendMessage(message);
-        ChatManager.getInstance().setMessage(ChatManager.getInstance().getMessage()+"You: "+message.getMessage()+"\n");
         input.setText("");
     }
 

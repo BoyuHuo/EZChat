@@ -28,7 +28,7 @@
          <children>
             <TextField fx:id="input" layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="434.0" />
          </children></AnchorPane>
-      <Button id="send_message" layoutX="496.0" layoutY="420.0" mnemonicParsing="false" text="Send" onAction="#sendMessage" />
+      <Button id="send_message" layoutX="496.0" layoutY="420.0" mnemonicParsing="false" text="Send" onAction="#sendMessage" defaultButton="true"/>
       <TextField fx:id="token" disable="true" layoutX="285.0" layoutY="37.0" prefHeight="30.0" prefWidth="272.0" />
       <Label layoutX="227.0" layoutY="40.0" prefHeight="24.0" prefWidth="57.0" text="Token:" />
    </children>
