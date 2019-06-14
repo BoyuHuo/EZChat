@@ -1,7 +1,9 @@
 package service;
 
+import entity.Message;
+
 public interface ServerService {
     String listOnlineUsers();
     String listmassage();
-    void pushMessage(String roomId,String name, String msg, int type);
+    void pushMessage(Message message);
 }
