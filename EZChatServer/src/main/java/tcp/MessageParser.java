@@ -127,9 +127,15 @@ public class MessageParser {
         if(TcpServer.room_map.get(""+chattingRoom.getId())==null){
             TcpServer.room_map.put(""+chattingRoom.getId(),new ArrayList<>());
         }
+        if(TcpServer.room_user_list.get(""+chattingRoom.getId())==null){
+            TcpServer.room_user_list.put(""+chattingRoom.getId(),new ArrayList<>());
+        }
         if(!TcpServer.room_map.get(""+chattingRoom.getId()).contains(serverThread)){
             serverThread.setRoomId(""+chattingRoom.getId());
             TcpServer.room_map.get(""+chattingRoom.getId()).add(serverThread);
+        }
+        if(!TcpServer.room_map.get(""+chattingRoom.getId()).contains(name)){
+            TcpServer.room_user_list.get(""+chattingRoom.getId()).add(name);
         }
 
         if(chattingRoom!=null){
