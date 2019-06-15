@@ -20,7 +20,7 @@ public class MessageEncoder {
     }
 
     public enum Instruction {
-        message, signin, signout,signup,createroom,joinroom,userlist,messagelist;
+        message, signin, signout,signup,createroom,joinroom,userlist,messagelist,userupdate;
 
         public static MessageEncoder.Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -52,6 +52,11 @@ public class MessageEncoder {
                 break;
             case messagelist:
                 out.println("@messagelist@"+msg);
+                break;
+            case userupdate:
+                out.println("@userupdate@"+msg);
+                break;
+
         }
 
     }

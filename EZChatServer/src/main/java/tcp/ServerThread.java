@@ -60,7 +60,7 @@ public class ServerThread extends Thread{
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {// 用户退出聊天室
+        } finally {
             try {
                 client.close();
             } catch (IOException e) {

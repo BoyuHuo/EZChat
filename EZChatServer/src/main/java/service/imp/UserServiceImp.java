@@ -20,36 +20,27 @@ public class UserServiceImp implements UserService {
         return userDataFunction.checkUser(user);
     }
 
-    //checkUser 方法似乎并没有放回null,有点问题
-    //
 
     public Boolean signUp(User user) {
-        //TODO: add user signUp logic : An Hengyang
-        if(user!=null) {
-            if(userDataFunction.checkUser(user)==null) {
+
+        if (user != null) {
+            if (userDataFunction.checkUser(user) == null) {
                 userDataFunction.addtUser(user);
                 return true;
-            }
-            else
-            return false;
-        }
-        else System.out.println("Please Check The Information Provided");
+            } else
+                return false;
+        } else System.out.println("Please Check The Information Provided");
         return false;
     }
 
-    public User updateUserInfo(User user) {
-        //TODO: update user info : An Hengyang
-        if(user!=null) {
-            if(userDataFunction.checkUser(user)!=null) {
-                userDataFunction.updateUser(user);
-                System.out.println("Update Successfully");
-                return user;
-            }
-            else return null;
-        }
-        else return null;
+    public boolean updateUserInfo(User user) {
+        return userDataFunction.updateUser(user);
     }
 
+    @Override
+    public User getUser(String id) {
+        return userDataFunction.selectUserByID(id);
+    }
 
 
 }

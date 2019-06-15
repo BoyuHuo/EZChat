@@ -12,29 +12,30 @@ import java.io.Reader;
 import java.util.List;
 
 
-public class UserDataFunction{
-	private static SqlSessionFactory sqlSessionFactory;
-    private static Reader reader; 
- 
-    static{
-        try{
+public class UserDataFunction {
+    private static SqlSessionFactory sqlSessionFactory;
+    private static Reader reader;
+
+    static {
+        try {
             reader = Resources.getResourceAsReader("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public UserDataFunction(){
+    public UserDataFunction() {
     }
 
-    public static SqlSessionFactory getSession(){
+    public static SqlSessionFactory getSession() {
         return sqlSessionFactory;
     }
-    
-    
+
+
     /**
      * User validation
+     *
      * @param newuser the user info need to validate
      * @return the validated user info
      */
@@ -51,24 +52,25 @@ public class UserDataFunction{
 
     /**
      * Add a new User into database
+     *
      * @param user the new user waiting to be added
      */
-    public void addtUser(User user){
+    public void addtUser(User user) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-        	UserMapper userMapper  = session.getMapper(UserMapper.class);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
             userMapper.insertUser(user);
             session.commit();
         } finally {
             session.close();
         }
     }
-    
-    
+
+
     public void deleteUserByID(int ID) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            UserMapper userMapper  = session.getMapper(UserMapper.class);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
             userMapper.deleteUserByID(ID);
             session.commit();
         } finally {
@@ -76,20 +78,35 @@ public class UserDataFunction{
         }
     }
 
-    
+
     /**
      * Update the user info
+     *
      * @param user the user waiting to be updated
      */
-	public void updateUser(User user) {
-		SqlSession session = sqlSessionFactory.openSession();
+    public boolean updateUser(User user) {
+        SqlSession session = sqlSessionFactory.openSession();
+        int result = 0;
         try {
-        	UserMapper userMapper  = session.getMapper(UserMapper.class);
-            userMapper.updateUser(user);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            result = userMapper.updateUser(user);
             session.commit();
         } finally {
             session.close();
+            return result > 0 ? true : false;
         }
-	}
+    }
+
+    public User selectUserByID(String id) {
+        SqlSession session = sqlSessionFactory.openSession();
+        User user = null;
+        try {
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            user = userMapper.selectUserByID(id);
+        } finally {
+            session.close();
+            return user;
+        }
+    }
 
 }

@@ -65,7 +65,7 @@ public class User {
         this.account = account;
     }
     public String toString(){
-        String result = ""+id+","+account+","+account+","+password+","+gender+","+email;
+        String result = ""+id+","+account+","+username+","+password+","+gender+","+email;
         return result.replace("@","*"); //Since the "@" is indentifier of the our TCP header, we replace it with "*"
     }
 }

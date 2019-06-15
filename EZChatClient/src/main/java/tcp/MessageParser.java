@@ -1,5 +1,6 @@
 package tcp;
 
+import controller.ModifyInformationController;
 import controller.SelfPageController;
 import entity.ChatManager;
 import entity.ChattingRoom;
@@ -47,7 +48,7 @@ public class MessageParser {
     }
 
     public enum Instruction {
-        message, signin,signup,createroom,joinroom, signout,userlist;
+        message, signin,signup,createroom,joinroom, signout,userlist, userupdate;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -81,14 +82,19 @@ public class MessageParser {
                 case signout:
                     break;
                 case userlist:
-                    String[] userlistInfo = tempMsg[6].split(",");
-                    ArrayList<String> userlist = new ArrayList<>();
-                    for(int i=0;i<userlistInfo.length;i++){
-                        if(!"".equals(userlistInfo[i])&&userlistInfo[i]!=null){
-                            userlist.add(userlistInfo[i]);
-                        }
+                    userlistProcess(tempMsg);
+                    break;
+                case userupdate:
+                    if(tempMsg[2].equals("no")){
+                        UserServiceImp.setUpdateFlag(1);
                     }
-                    ChatManager.getInstance().setUsers(userlist);
+                    else{
+                        String[] userInfo = tempMsg[3].split(",");
+                        User user = new User(userInfo[0],userInfo[1],userInfo[2],userInfo[3],userInfo[4],userInfo[5].replace("*","@"));
+                        SelfPageController.user = user;
+                        ModifyInformationController.user = user;
+                        UserServiceImp.setUpdateFlag(2);
+                    }
                     break;
                 default:
                     System.out.println("Unknow header!");
@@ -141,6 +147,17 @@ public class MessageParser {
 
             RoomServiceImp.setJoinRoomFlag(2);
         }
+    }
+
+    public void userlistProcess(String[] tempMsg){
+        String[] userlistInfo = tempMsg[6].split(",");
+        ArrayList<String> userlist = new ArrayList<>();
+        for(int i=0;i<userlistInfo.length;i++){
+            if(!"".equals(userlistInfo[i])&&userlistInfo[i]!=null){
+                userlist.add(userlistInfo[i]);
+            }
+        }
+        ChatManager.getInstance().setUsers(userlist);
     }
 
 }

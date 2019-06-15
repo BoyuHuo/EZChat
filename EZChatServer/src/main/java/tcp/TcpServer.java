@@ -17,18 +17,18 @@ public class TcpServer extends ServerSocket {
     private static final int SERVER_PORT = 5566;
     public static boolean isPrint = false;
     public static List<String> user_list = new ArrayList<String>();// the collection of sign-in users
-    public static List<ServerThread> thread_list = new ArrayList<ServerThread>();// 服务器已启用线程集合
+    public static List<ServerThread> thread_list = new ArrayList<ServerThread>();
     public static HashMap<String,List<String>> room_user_list = new HashMap<>();
     public static HashMap<String,List<ServerThread>> room_map = new HashMap<>();
-    public static LinkedList<Message> message_list = new LinkedList<Message>();// 存放用户消息的队列
+    public static LinkedList<Message> message_list = new LinkedList<Message>();
 
     /**
-     * 创建服务端Socket,创建向客户端发送消息线程,监听客户端请求并处理
+     * create server socket, create thread for sending the message to client, monitoring the request
      */
     public TcpServer() throws IOException {
         super(SERVER_PORT);// 创建ServerSocket
         new PrintOutThread();// 处理所有客户端发送的消息
-        System.out.println("服务器已启动");
+        System.out.println("Server Started!");
         try {
             while (true) {// 监听客户端请求，启个线程处理
                 Socket socket = accept();
