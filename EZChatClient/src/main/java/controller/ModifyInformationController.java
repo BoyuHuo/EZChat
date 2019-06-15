@@ -1,9 +1,9 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,10 +15,11 @@ import entity.User;
 import service.UserService;
 import service.imp.UserServiceImp;
 
-import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ModifyInformationController {
+public class ModifyInformationController implements Initializable {
 
     // users' information
     @FXML
@@ -31,7 +32,6 @@ public class ModifyInformationController {
     private RadioButton gender_male;
     @FXML
     private RadioButton gender_female;
-
 
     public static User user;
 
@@ -71,13 +71,12 @@ public class ModifyInformationController {
             alert.setContentText("Sorry, update fail!\n Please try again!");
             alert.showAndWait();
         } else if (UserServiceImp.getUpdateFlag() == 2) {
-            if (UserServiceImp.getUpdateFlag() == 1) {
+                initUserInfoRender();
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("OK!");
                 alert.setHeaderText(null);
                 alert.setContentText("Update Successful!");
                 alert.showAndWait();
-            }
         }
     }
 
@@ -94,7 +93,10 @@ public class ModifyInformationController {
     }
 
 
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initUserInfoRender();
+    }
 }
 
 

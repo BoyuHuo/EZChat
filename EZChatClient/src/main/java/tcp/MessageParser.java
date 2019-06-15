@@ -93,7 +93,7 @@ public class MessageParser {
                         User user = new User(userInfo[0],userInfo[1],userInfo[2],userInfo[3],userInfo[4],userInfo[5].replace("*","@"));
                         SelfPageController.user = user;
                         ModifyInformationController.user = user;
-                        UserServiceImp.setLoginFlag(2);
+                        UserServiceImp.setUpdateFlag(2);
                     }
                     break;
                 default:

@@ -169,12 +169,14 @@ public class MessageParser {
     public void uesrUpdateProcess(String[] tempMsg){
         String[] userInfo = tempMsg[2].split(",");
         User user = new User(userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4], userInfo[5].replace("*", "@"));
-        User result = userService.updateUserInfo(user);
-        String resultStr = result==null ? "yes" : "no";
+        Boolean result = userService.updateUserInfo(user);
+
+        String resultStr = result ? "yes" : "no";
+        User resultUser = userService.getUser(user.getId());
         if(resultStr.equals("yes")){
-            out.println("@signup@" + resultStr+"@"+resultStr.toString());
+            out.println("@userupdate@" + resultStr+"@"+resultUser.toString());
         }else{
-            out.println("@signup@" + resultStr);
+            out.println("@userupdate@" + resultStr);
         }
 
     }
