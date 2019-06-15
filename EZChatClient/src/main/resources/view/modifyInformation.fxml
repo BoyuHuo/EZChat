@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyInformationController">
+<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.172-ea" style="-fx-background-image: url('pictures/logOn_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyInformationController">
     <children>
         <TextArea id="modify_introduction" layoutX="159.0" layoutY="414.0" prefHeight="120.0" prefWidth="224.0" />
         <Text layoutX="51.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />

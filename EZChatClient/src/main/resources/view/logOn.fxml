@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -7,27 +11,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="471.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<AnchorPane prefHeight="471.0" prefWidth="420.0" style="-fx-background-image: url('pictures/logOn_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
-        <Text layoutX="43.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
-        <Text layoutX="58.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
-        <Text layoutX="51.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
-        <Text layoutX="59.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
-        <Text layoutX="14.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:" />
-        <Text layoutX="58.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account:" />
-        <TextField fx:id="user_name" layoutX="151.0" layoutY="53.0" />
-        <TextField fx:id="e_mail" layoutX="151.0" layoutY="104.0" />
-        <TextField fx:id="password" layoutX="154.0" layoutY="239.0" />
-        <TextField fx:id="password_confirm" layoutX="155.0" layoutY="288.0" />
-        <TextField fx:id="account" layoutX="151.0" layoutY="150.0" />
-        <RadioButton fx:id="user_gender_male" layoutX="154.0" layoutY="203.0" mnemonicParsing="false" selected="true" text="Male">
+        <Text layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
+        <Text layoutX="85.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="73.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="84.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <Text layoutX="83.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm:" />
+        <Text layoutX="78.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account:" />
+        <TextField fx:id="user_name" layoutX="136.0" layoutY="47.0" prefHeight="39.0" prefWidth="234.0" />
+        <TextField fx:id="e_mail" layoutX="136.0" layoutY="101.0" prefHeight="39.0" prefWidth="234.0" />
+        <TextField fx:id="password" layoutX="136.0" layoutY="267.0" prefHeight="39.0" prefWidth="234.0" />
+        <TextField fx:id="password_confirm" layoutX="136.0" layoutY="322.0" prefHeight="39.0" prefWidth="234.0" />
+        <TextField fx:id="account" layoutX="136.0" layoutY="152.0" prefHeight="39.0" prefWidth="234.0" />
+        <RadioButton fx:id="user_gender_male" layoutX="137.0" layoutY="218.0" mnemonicParsing="false" selected="true" text="Male">
             <toggleGroup>
                 <ToggleGroup fx:id="sex" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton layoutX="238.0" layoutY="203.0" mnemonicParsing="false" text="Female" toggleGroup="$sex" />
-        <Button layoutX="101.0" layoutY="373.0" mnemonicParsing="false" onAction="#sureBtn" text="Sure" />
-        <Button layoutX="256.0" layoutY="373.0" mnemonicParsing="false" onAction="#cancleBtn" text="Cancel" />
+        <RadioButton layoutX="244.0" layoutY="218.0" mnemonicParsing="false" text="Female" toggleGroup="$sex" />
+        <Button layoutX="97.0" layoutY="399.0" mnemonicParsing="false" onAction="#sureBtn" prefHeight="39.0" prefWidth="84.0" text="Sure" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font></Button>
+        <Button layoutX="263.0" layoutY="399.0" mnemonicParsing="false" onAction="#cancleBtn" prefHeight="39.0" prefWidth="89.0" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font></Button>
 
 
     </children>
