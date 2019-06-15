@@ -38,7 +38,7 @@ public class MessageParser {
 
 
     public enum Instruction {
-        message, signin, userlist, messagelist, signup, createroom, joinroom, history;
+        message, signin, userlist, messagelist, signup, createroom, joinroom, history,userupdate;
 
         public static Instruction getInstruction(String instruction) {
             return valueOf(instruction.toLowerCase());
@@ -79,6 +79,9 @@ public class MessageParser {
                     joinChattingRoomProcess(tempMsg);
                     break;
                 case history:
+                    break;
+                case userupdate:
+                    uesrUpdateProcess(tempMsg);
                     break;
                 default:
                     break;
@@ -160,6 +163,19 @@ public class MessageParser {
             out.println("@joinroom@no");
         }
 
+
+    }
+
+    public void uesrUpdateProcess(String[] tempMsg){
+        String[] userInfo = tempMsg[2].split(",");
+        User user = new User(userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4], userInfo[5].replace("*", "@"));
+        User result = userService.updateUserInfo(user);
+        String resultStr = result==null ? "yes" : "no";
+        if(resultStr.equals("yes")){
+            out.println("@signup@" + resultStr+"@"+resultStr.toString());
+        }else{
+            out.println("@signup@" + resultStr);
+        }
 
     }
 
