@@ -51,7 +51,7 @@ public class CreateRoomController {
 
             }else{
 
-                System.out.println(RoomServiceImp.room.toString());
+
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation Dialog");
                 alert.setHeaderText("Success");
