@@ -24,7 +24,7 @@ public class UserServiceImp implements UserService {
     //
 
     public Boolean signUp(User user) {
-        //TODO: add user signUp logic : An Hengyang
+
         if(user!=null) {
             if(userDataFunction.checkUser(user)==null) {
                 userDataFunction.addtUser(user);
@@ -38,7 +38,7 @@ public class UserServiceImp implements UserService {
     }
 
     public User updateUserInfo(User user) {
-        //TODO: update user info : An Hengyang
+
         if(user!=null) {
             if(userDataFunction.checkUser(user)!=null) {
                 userDataFunction.updateUser(user);

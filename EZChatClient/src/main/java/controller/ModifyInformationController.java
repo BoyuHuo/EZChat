@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import entity.User;
 
@@ -17,15 +19,33 @@ public class ModifyInformationController {
 
     // users' information
     @FXML
-    private TextArea modify_introduction;
-    private Checkbox modify_male;
-    private Checkbox modify_female;
     private TextField modify_user_name;
+    @FXML
+    private TextField modify_e_mail;
+    @FXML
     private TextField modify_password;
-    private TextField modify_email;
-    public User user;
+    @FXML
+    private RadioButton gender_male;
+    @FXML
+    private RadioButton gender_female;
+
+
+    public static User user;
 
     public void initUserInfoRender(){
+        modify_user_name.setText(user.getUsername());
+        modify_e_mail.setText(user.getEmail());
+        modify_password.setText(user.getPassword());
+        if(user.getGender().equals("m")){
+            gender_male.setSelected(true);
+        }else{
+            gender_female.setSelected(true);
+        }
+    }
+
+
+    @FXML
+    private void clickButtonModify(){
 
     }
 
