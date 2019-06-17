@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.UserService;
@@ -17,7 +18,7 @@ import java.io.IOException;
 
 public class SignInController {
     @FXML private TextField account;
-    @FXML private TextField password;
+    @FXML private PasswordField password;
 
     UserService userService = new UserServiceImp();
 

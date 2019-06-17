@@ -13,12 +13,12 @@
 
 <AnchorPane prefHeight="471.0" prefWidth="420.0" style="-fx-background-image: url('pictures/logOn_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
-        <Text layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
-        <Text layoutX="85.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
-        <Text layoutX="73.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
-        <Text layoutX="84.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
-        <Text layoutX="83.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm:" />
-        <Text layoutX="78.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account:" />
+        <Text layoutX="34.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
+        <Text layoutX="59.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="47.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="58.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <Text layoutX="57.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm:" />
+        <Text layoutX="52.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account:" />
         <TextField fx:id="user_name" layoutX="136.0" layoutY="47.0" prefHeight="39.0" prefWidth="234.0" />
         <TextField fx:id="e_mail" layoutX="136.0" layoutY="101.0" prefHeight="39.0" prefWidth="234.0" />
         <TextField fx:id="password" layoutX="136.0" layoutY="267.0" prefHeight="39.0" prefWidth="234.0" />
