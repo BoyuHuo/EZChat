@@ -26,7 +26,6 @@
          </font>
       </Text>
       <TextField fx:id="account" layoutX="335.0" layoutY="231.0" prefHeight="38.0" prefWidth="263.0" />
-      <TextField fx:id="password" layoutX="335.0" layoutY="308.0" prefHeight="39.0" prefWidth="263.0" />
       <Button id="log_on" layoutX="447.0" layoutY="387.0" mnemonicParsing="false" onAction="#signup" prefHeight="53.0" prefWidth="112.0" text="Sign Up" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -35,5 +34,6 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
+      <PasswordField layoutX="335.0" layoutY="305.0" prefHeight="39.0" prefWidth="263.0" />
    </children>
 </AnchorPane>

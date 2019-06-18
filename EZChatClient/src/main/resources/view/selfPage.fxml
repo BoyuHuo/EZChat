@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane style="-fx-background-image: url('pictures/self_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns="http://javafx.com/javafx/8" prefHeight="460.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelfPageController">
     <children>
         <Line endX="100.0" layoutX="255.0" layoutY="65.0" startX="-100.0" />
@@ -25,10 +27,18 @@
          <font>
             <Font name="System Bold" size="22.0" />
          </font></Button>
-      <AnchorPane id="profile" layoutX="25.0" layoutY="22.0" prefHeight="126.0" prefWidth="126.0" />
+      <AnchorPane id="profile" layoutX="25.0" layoutY="22.0" prefHeight="126.0" prefWidth="126.0">
+          <ImageView fitHeight="126.0" fitWidth="126.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <image>
+                  <Image url="/pictures/profile.jpg" />
+              </image>
+          </ImageView>
+      </AnchorPane>
       <Label fx:id="username" layoutX="159.0" layoutY="28.0" prefHeight="29.0" prefWidth="192.0" text="username" />
         <Label fx:id="userGender" layoutX="159.0" layoutY="68.0" text="userGender" />
       <Label fx:id="userAccount" layoutX="159.0" layoutY="95.0" text="userAccount" />
       <Label fx:id="userEmail" layoutX="160.0" layoutY="122.0" text="userEmail" />
+
+
     </children>
 </AnchorPane>

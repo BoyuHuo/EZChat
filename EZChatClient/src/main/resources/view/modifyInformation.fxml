@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
@@ -8,20 +13,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.172-ea" style="-fx-background-image: url('pictures/logOn_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyInformationController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane id="profile" prefHeight="700.0" prefWidth="420.0" style="-fx-background-image: url('pictures/logOn_bg.jpg');" stylesheets="@../css/logOnCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyInformationController">
     <children>
         <TextArea id="modify_introduction" layoutX="159.0" layoutY="414.0" prefHeight="120.0" prefWidth="224.0" />
-        <Text layoutX="51.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
+        <Text layoutX="41.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What's up: " />
         <Button id="cancel_modify" layoutX="267.0" layoutY="574.0" mnemonicParsing="false" onAction="#clickButtonExit" text="Cancel" />
         <Button id="sure_modify" layoutX="108.0" layoutY="574.0" mnemonicParsing="false" onAction="#clickButtonModify" text="Sure" />
         <TextField fx:id="modify_password" layoutX="159.0" layoutY="356.0" />
         <TextField fx:id="modify_e_mail" layoutX="159.0" layoutY="262.0" />
         <TextField fx:id="modify_user_name" layoutX="159.0" layoutY="211.0" />
-        <Text layoutX="49.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
-        <Text layoutX="51.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
-        <Text layoutX="51.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
-        <Text layoutX="51.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
-      <AnchorPane layoutX="135.0" layoutY="45.0" prefHeight="128.0" prefWidth="151.0" />
+        <Text layoutX="39.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender: " />
+        <Text layoutX="41.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " />
+        <Text layoutX="41.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E- mail: " />
+        <Text layoutX="41.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name: " />
+      <AnchorPane layoutX="135.0" layoutY="30.0" prefHeight="152.0" prefWidth="152.0">
+          <ImageView fitHeight="152.0" fitWidth="152.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <image>
+                  <Image url="/pictures/profile.jpg" />
+              </image>
+          </ImageView>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></AnchorPane>
       <RadioButton fx:id="gender_male" layoutX="161.0" layoutY="320.0" mnemonicParsing="false" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="gender" />
