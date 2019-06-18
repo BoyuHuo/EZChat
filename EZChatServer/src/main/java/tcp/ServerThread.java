@@ -20,7 +20,7 @@ public class ServerThread extends Thread{
 
     private BufferedReader in;  //From client
 
-    private String name;
+    public String name;
 
     private String roomId;
 
@@ -68,14 +68,29 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
+            if(TcpServer.room_user_list.get(roomId)!=null){
+                TcpServer.room_user_list.get(roomId).remove(name);
+            }
             if(TcpServer.room_map.get(roomId)!=null){
                 TcpServer.room_map.get(roomId).remove(this);
             }
             Message message = new Message();
-            message.setRoom_id(Integer.parseInt(roomId));
+            if(roomId!=null){
+                message.setRoom_id(Integer.parseInt(roomId));
+            }
             message.setUser_name(name);
             message.setMessage(" leave the chatting room!");
             serverService.pushMessage(message);
+
+            Message userlistMessage = new Message();
+            if(roomId!=null){
+                userlistMessage.setRoom_id(Integer.parseInt(roomId));
+            }
+            userlistMessage.setUser_name(name);
+            userlistMessage.setType_flag(1);
+            userlistMessage.setMessage(TcpServer.getUserListByRoom(roomId+""));
+
+            serverService.pushMessage(userlistMessage);
         }
     }
 
@@ -99,4 +114,6 @@ public class ServerThread extends Thread{
     public void setRoomId(String roomId) {
         this.roomId = roomId;
     }
+
+
 }
