@@ -5,13 +5,13 @@ public class Message {
 
     private String id = "";
     // 消息
-    private String message;
+    private String message="";
     private int room_id;
 
     private int user_id;
-    private String createTime;
+    private String createTime="";
 
-    private String user_name;
+    private String user_name="";
 
     private String client;
 

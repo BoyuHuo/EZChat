@@ -44,7 +44,7 @@ public class SelfPageController implements Initializable {
     private void clickeditInformation(ActionEvent event) throws IOException {
         ModifyInformationController.user = SelfPageController.user;
         Parent newGameScreen = FXMLLoader.load(getClass().getResource("/view/modifyInformation.fxml"));
-        Scene newGameScene = new Scene(newGameScreen, 420, 600);
+        Scene newGameScene = new Scene(newGameScreen, 420, 700);
         Stage newGameScreenStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         newGameScreenStage.setScene(newGameScene);
         newGameScreenStage.show();

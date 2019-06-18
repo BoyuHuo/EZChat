@@ -67,6 +67,7 @@ public class MessageParser {
                     userSignupProcess(tempMsg);
                     break;
                 case userlist:
+                    System.out.println(serverService.listOnlineUsers());
                     out.println(serverService.listOnlineUsers());
                     break;
                 case messagelist:
@@ -97,6 +98,7 @@ public class MessageParser {
         User user = userService.signIn(userCredential[0], userCredential[1]);
         if (user != null) {
             name = user.getUsername();
+            this.serverThread.name = user.getUsername();
             TcpServer.user_list.add(name);
             TcpServer.thread_list.add(serverThread);
             out.println("@signin@yes@" + user.toString());
@@ -144,7 +146,7 @@ public class MessageParser {
 
         if(chattingRoom!=null){
             out.println("@joinroom@yes@"+chattingRoom.toString());
-            serverThread.setRoomId(tempMsg[2]);
+            serverThread.setRoomId(chattingRoom.getId()+"");
             Message message = new Message();
             message.setRoom_id(chattingRoom.getId());
             message.setUser_name(name);
@@ -173,6 +175,7 @@ public class MessageParser {
 
         String resultStr = result ? "yes" : "no";
         User resultUser = userService.getUser(user.getId());
+        this.name = resultUser.getUsername();
         if(resultStr.equals("yes")){
             out.println("@userupdate@" + resultStr+"@"+resultUser.toString());
         }else{
