@@ -59,7 +59,7 @@ public class ServerThread extends Thread{
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            out.println("IP:"+client.getInetAddress()+"disconnected! bye!");
         } finally {
             try {
                 client.close();
@@ -68,7 +68,9 @@ public class ServerThread extends Thread{
             }
             TcpServer.thread_list.remove(this);
             TcpServer.user_list.remove(name);
-            TcpServer.room_map.get(roomId).remove(this);
+            if(TcpServer.room_map.get(roomId)!=null){
+                TcpServer.room_map.get(roomId).remove(this);
+            }
             Message message = new Message();
             message.setRoom_id(Integer.parseInt(roomId));
             message.setUser_name(name);
