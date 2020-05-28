@@ -1,2 +1,2 @@
 # EZChat
-SOEN 6471
+A Online Chatting application, that is easy to be used
